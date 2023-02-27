@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://visualcomputing20231.github.io/showcase/sitemap.xml
