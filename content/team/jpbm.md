@@ -8,7 +8,7 @@ literario como cinematográfico: en particular, siento afinidad por las obras de
 
 ## Mis intereses:
 
-- Desarrollo frontEnd.
+- Desarrollo FrontEnd.
 - Análisis de lenguajes de programación.
 - Inteligencia artificial. 
 - Ciberseguridad.

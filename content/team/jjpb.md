@@ -2,12 +2,12 @@
 
 ![Fotografía](img/jjpb.png)
 
-Estudiante de Ingenieria de Sistemas y Computacion de la UNAL.
-apasionado por el desarrollo de aplicaciones audiovisuales. Me gusta la interactividad en los medios, la experimentacion y creacion de contenido para nuevas y mejores experiencias. Un poco adicto al tooling y la optimizacion de los sistemas en todas las fases, apoyo y utilizo preferiblemente herramientas open source.
+Estudiante de Ingenieria de Sistemas y Computación de la UNAL,
+apasionado por el desarrollo de aplicaciones audiovisuales. Me gusta la interactividad en los medios, la experimentación y la creación de contenido para nuevas y mejores experiencias. Un poco adicto al tooling y la optimización de los sistemas en todas las fases. Apoyo y utilizo preferiblemente herramientas open source.
 
 ## Mis intereses:
 
-- Desarrollo de Video Juegos.
-- Animacion y computacion visual.
-- Inteligencia Arificial
-- Idiomas
+- Desarrollo de videojuegos.
+- Animación y computación visual.
+- Inteligencia arificial.
+- Idiomas.
