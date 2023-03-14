@@ -12,7 +12,35 @@
 
 [[main]]
   name = "Equipo"
-#  weight = 20
+  weight = 10
+
+[[main]]
+  name = "Primera Entrega"
+  weight = 30
+
+[[main]]
+  name = "Introducción y Marco Teórico"
+  parent = "Primera Entrega"
+  pageRef = "first/intro"
+  weight = 10
+
+[[main]]
+  name = "Conclusiones y Trabajo Futuro"
+  parent = "Primera Entrega"
+  pageRef = "first/conclude"
+  weight = 100
+
+[[main]]
+  name = "Visual Masking"
+  parent = "Primera Entrega"
+  pageRef = "first/masking"
+  weight = 30
+
+[[main]]
+  name = "Temporal Coherence"
+  parent = "Primera Entrega"
+  pageRef = "first/keyframes"
+  weight = 70
 
 [[main]]
   name = "Juan Pablo Bustamante Moreno"
