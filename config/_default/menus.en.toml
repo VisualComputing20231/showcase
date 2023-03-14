@@ -25,6 +25,12 @@
   weight = 10
 
 [[main]]
+  name = "Colouring"
+  parent = "Primera Entrega"
+  pageRef = "first/colouring"
+  weight = 20
+
+[[main]]
   name = "Conclusiones y Trabajo Futuro"
   parent = "Primera Entrega"
   pageRef = "first/conclude"
