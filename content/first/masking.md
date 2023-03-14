@@ -19,7 +19,7 @@ let gifLoading = false;
 let uploaded = false;
 
 function preload(){
-gif = loadImage("../img/example.gif")
+gif = loadImage("../assets/example.gif")
 }
 
 function setup() {
@@ -118,7 +118,7 @@ let fileLoading = false;
 let uploaded = false;
 
 function preload() {
-file = loadImage("../img/shrek.png");
+file = loadImage("../assets/shrek.png");
 }
 
 function setup() {
