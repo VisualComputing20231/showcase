@@ -27,7 +27,7 @@
 [[main]]
   name = "Colouring"
   parent = "Primera Entrega"
-  pageRef = "first/colouring"
+  pageRef = "first/coloring"
   weight = 20
 
 [[main]]
