@@ -24,29 +24,37 @@
   pageRef = "first/intro"
   weight = 10
 
+  [[main]]
+  name = "Visual Illusions"
+  parent = "Primera Entrega"
+  pageRef = "first/illusions"
+  weight = 20
+
 [[main]]
   name = "Colouring"
   parent = "Primera Entrega"
   pageRef = "first/coloring"
-  weight = 20
+  weight = 30
 
-[[main]]
-  name = "Conclusiones y Trabajo Futuro"
-  parent = "Primera Entrega"
-  pageRef = "first/conclude"
-  weight = 100
+
 
 [[main]]
   name = "Visual Masking"
   parent = "Primera Entrega"
   pageRef = "first/masking"
-  weight = 30
+  weight = 40
 
 [[main]]
   name = "Temporal Coherence"
   parent = "Primera Entrega"
   pageRef = "first/keyframes"
   weight = 70
+
+  [[main]]
+  name = "Conclusiones y Trabajo Futuro"
+  parent = "Primera Entrega"
+  pageRef = "first/conclude"
+  weight = 100
 
 [[main]]
   name = "Juan Pablo Bustamante Moreno"
