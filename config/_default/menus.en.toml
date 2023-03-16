@@ -19,27 +19,19 @@
   weight = 30
 
 [[main]]
-  name = "Introducción y Marco Teórico"
-  parent = "Primera Entrega"
-  pageRef = "first/intro"
-  weight = 10
-
-  [[main]]
-  name = "Visual Illusions"
-  parent = "Primera Entrega"
-  pageRef = "first/illusions"
-  weight = 20
+name = "Visual Illusions"
+parent = "Primera Entrega"
+pageRef = "first/illusions"
+weight = 20
 
 [[main]]
-  name = "Colouring"
-  parent = "Primera Entrega"
-  pageRef = "first/coloring"
-  weight = 30
-
-
+name = "Coloring"
+parent = "Primera Entrega"
+pageRef = "first/coloring"
+weight = 30
 
 [[main]]
-  name = "Visual Masking"
+  name = "Masking"
   parent = "Primera Entrega"
   pageRef = "first/masking"
   weight = 40
@@ -48,13 +40,13 @@
   name = "Temporal Coherence"
   parent = "Primera Entrega"
   pageRef = "first/keyframes"
-  weight = 70
+  weight = 60
 
   [[main]]
-  name = "Conclusiones y Trabajo Futuro"
+  name = "Depth Perception"
   parent = "Primera Entrega"
-  pageRef = "first/conclude"
-  weight = 100
+  pageRef = "first/depth"
+  weight = 70
 
 [[main]]
   name = "Juan Pablo Bustamante Moreno"
