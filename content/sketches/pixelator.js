@@ -15,7 +15,7 @@ let pixelMode = 0
 let lastPixelMode = 3
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(800, 550);
   video = createCapture(VIDEO);
   video.size(videoXResolution, videoYResolution);
   video.hide();
@@ -41,7 +41,7 @@ function draw() {
   background(0);
   video.loadPixels();
   if (isProcessingEnabled) {
-    let pixelSize = int(map(mouseX, 0, windowWidth, minSize, maxSize));
+    pixelSize = int(map(mouseX, 0, windowWidth, minSize, maxSize));
 
     for (let x = 0; x < video.width; x += pixelSize) {
       for (let y = 0; y < video.height; y += pixelSize) {

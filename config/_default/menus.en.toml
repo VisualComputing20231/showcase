@@ -19,16 +19,22 @@
   weight = 30
 
 [[main]]
-name = "Visual Illusions"
-parent = "Primera Entrega"
-pageRef = "first/illusions"
-weight = 20
+  name = "Visual Illusions"
+  parent = "Primera Entrega"
+  pageRef = "first/illusions"
+  weight = 10
 
 [[main]]
-name = "Coloring"
-parent = "Primera Entrega"
-pageRef = "first/coloring"
-weight = 30
+  name = "Coloring"
+  parent = "Primera Entrega"
+  pageRef = "first/coloring"
+  weight = 20
+
+[[main]]
+  name = "Mach Bands"
+  parent = "Primera Entrega"
+  pageRef = "first/terrain"
+  weight = 30
 
 [[main]]
   name = "Masking"
@@ -37,12 +43,18 @@ weight = 30
   weight = 40
 
 [[main]]
+  name = "Spatial Coherence"
+  parent = "Primera Entrega"
+  pageRef = "first/pixelator"
+  weight = 50
+
+[[main]]
   name = "Temporal Coherence"
   parent = "Primera Entrega"
   pageRef = "first/keyframes"
   weight = 60
 
-  [[main]]
+[[main]]
   name = "Depth Perception"
   parent = "Primera Entrega"
   pageRef = "first/depth"

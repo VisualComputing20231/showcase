@@ -5,14 +5,14 @@ function setup() {
 }
 
 function draw() {
-    background(100,200,100);
+    background(80,180,80);
 
     road(frameCount % (2*height))
 }
 
 function road(fc){
 
-    fill(180, 200, 255)
+    fill(140, 180, 240)
 
     for(let sky = -10; sky >= -200; sky-=10) {
         rect(width / 2, sky + fc / 4, 100 * fc, fc / 4)
