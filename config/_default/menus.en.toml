@@ -37,10 +37,16 @@
   weight = 30
 
 [[main]]
-  name = "Masking"
+  name = "Masking I: Moiré Patterns & Kinegrams"
   parent = "Primera Entrega"
-  pageRef = "first/masking"
+  pageRef = "first/masking1"
   weight = 40
+
+[[main]]
+name = "Masking II: Convolution Masks"
+parent = "Primera Entrega"
+pageRef = "first/masking2"
+weight = 45
 
 [[main]]
   name = "Spatial Coherence"

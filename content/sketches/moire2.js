@@ -1,6 +1,5 @@
 function setup() {
     createCanvas(700, 700, WEBGL);
-    textSize(32);
 
     slider1 = createSlider(5000, 20000, 10000);
     slider1.position(width/3, 30);
@@ -37,12 +36,10 @@ function draw() {
     rotateZ(-millis()/slider3.value());
     lines('blue');
 
-    // '1' key
     if (keyIsDown(LEFT_ARROW)) {
         cam.setPosition(0, 0, -600);
         cam.lookAt(0,0,0);
     }
-    // '2' key
     if (keyIsDown(RIGHT_ARROW)) {
         cam.setPosition(0, 0, 600);
         cam.lookAt(0,0,0);
