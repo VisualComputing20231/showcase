@@ -13,7 +13,6 @@
 {{< p5-iframe sketch="/showcase/sketches/colormapping.js" width="1280" height="720" align="middle">}}
 </div>
 
-{{% justify %}}
 
 {{% justify %}}
 Manipule los canales con las teclas 'r', 'g', 'b' para ver cómo se ven (aproximadamente) los colores para personas con daltonismo.
