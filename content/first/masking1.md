@@ -507,9 +507,9 @@ que ya se cargó el archivo: dentro de esta última vuelve a llamarse el **setup
 
 ## Referencias
 
-#### *[1]*. B. G. Breitmeyer, “Visual Masking: An Integrative Approach,” Oxford University Press, Oxford, 1984.
-#### *[2]*. L. Spillmann, "The Perception of Movement and Depth in Moiré Patterns," Perception, vol. 22, no. 3, pp. 287-308, 1993, doi: 10.1068/p220287.
-#### *[3]*. R. L. Van Renesse, "A review of holograms and other microstructures as security features," Springer Series in Optical Sciences, vol. 78, 2007. <https://www.dslreports.com/r0/download/2346751~41cd69e70ba7cfa509b37dddbba63faa/vanrenesse.pdf>
-#### *[4]*. O. Georgiou and M. Georgiou, "ZEBRA | COMPUTING MOIRE ANIMATIONS," Sustainable Computational Workflows, pp. 49-56, 2018. <http://papers.cumincad.org/data/works/att/ecaaderis2018_120.pdf>
+#### *[1]* B. G. Breitmeyer, “Visual Masking: An Integrative Approach,” Oxford University Press, Oxford, 1984.
+#### *[2]* L. Spillmann, "The Perception of Movement and Depth in Moiré Patterns," Perception, vol. 22, no. 3, pp. 287-308, 1993, doi: 10.1068/p220287.
+#### *[3]* R. L. Van Renesse, "A review of holograms and other microstructures as security features," Springer Series in Optical Sciences, vol. 78, 2007. <https://www.dslreports.com/r0/download/2346751~41cd69e70ba7cfa509b37dddbba63faa/vanrenesse.pdf>
+#### *[4]* O. Georgiou and M. Georgiou, "ZEBRA | COMPUTING MOIRE ANIMATIONS," Sustainable Computational Workflows, pp. 49-56, 2018. <http://papers.cumincad.org/data/works/att/ecaaderis2018_120.pdf>
 
 {{% /justify %}}

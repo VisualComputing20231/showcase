@@ -271,11 +271,11 @@ buscar la mejor forma en que dichas claves pueden integrarse en un sketch 2D.
 
 ## Referencias
 
-#### *[1]*. J. P. Charalambos, "Depth perception". Visual Computing, Feb. 2023. <https://visualcomputing.github.io/docs/visual_illusions/depth_perception/>
-#### *[2]*. A. E. Roy and D. Clarke, "Astronomy: Principles and Practice," 4th ed., CRC Press, 2003.
-#### *[3]*. B. J. Rogers and M. E. Graham, "Motion Parallax as an Independent Cue for Depth Perception," Perception, vol. 8, no. 2, pp. 125-34, 1979. doi: 10.1068/p080125.
-#### *[4]*. J. Murray. "Some perspectives on visual depth perception," ACM SIGGRAPH Computer Graphics, vol. 28, no. 2, pp. 155-157, 1994, doi: 10.1145/178951.178985.
-#### *[5]*. S. Schwartz, "Visual Perception: A Clinical Orientation (Fourth Edition)," McGraw-Hill Education, 1994.
-#### *[6]*. M.T. Swanston and W.C. Gogel, "Perceived size and motion in depth from optical expansion," Perception & Psychophysics, vol. 39, pp. 309-326, 1986. doi: 10.3758/BF03202998.
+#### *[1]* J. P. Charalambos, "Depth perception". Visual Computing, Feb. 2023. <https://visualcomputing.github.io/docs/visual_illusions/depth_perception/>
+#### *[2]* A. E. Roy and D. Clarke, "Astronomy: Principles and Practice," 4th ed., CRC Press, 2003.
+#### *[3]* B. J. Rogers and M. E. Graham, "Motion Parallax as an Independent Cue for Depth Perception," Perception, vol. 8, no. 2, pp. 125-34, 1979. doi: 10.1068/p080125.
+#### *[4]* J. Murray. "Some perspectives on visual depth perception," ACM SIGGRAPH Computer Graphics, vol. 28, no. 2, pp. 155-157, 1994, doi: 10.1145/178951.178985.
+#### *[5]* S. Schwartz, "Visual Perception: A Clinical Orientation (Fourth Edition)," McGraw-Hill Education, 1994.
+#### *[6]* M.T. Swanston and W.C. Gogel, "Perceived size and motion in depth from optical expansion," Perception & Psychophysics, vol. 39, pp. 309-326, 1986. doi: 10.3758/BF03202998.
 
 {{% /justify %}}

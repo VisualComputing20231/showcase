@@ -595,9 +595,9 @@ que pueden llegar a emplear las inteligencias artificiales relacionadas con el p
 
 ## Referencias
 
-#### *[1]*. S. Kim and R. Casper, "Applications of convolution in image processing with MATLAB," University of Washington, pp. 1-20, 2013. <http://kiwi.bridgeport.edu/cpeg585/ConvolutionFiltersInMatlab.pdf>
-#### *[2]*. J. P. Charalambos, "Visual masking". Visual Computing, Feb. 2023. <https://visualcomputing.github.io/docs/visual_illusions/masking/>
-#### *[3]*. S. Raveendran, P. J. Edavoor, N. K. Yernad Balachandra and V. Moodabettu Harishchandra, "Design and implementation of image kernels using reversible logic gates," IET Image Processing, vol. 14, no 16, pp. 4110-4121, 2020, doi: 10.1049/iet-ipr.2019.1681.
-#### *[4]*. R. C. Gonzalez and R. E. Woods, "Digital Image Processing," 4th ed., Pearson, 2018.
+#### *[1]* S. Kim and R. Casper, "Applications of convolution in image processing with MATLAB," University of Washington, pp. 1-20, 2013. <http://kiwi.bridgeport.edu/cpeg585/ConvolutionFiltersInMatlab.pdf>
+#### *[2]* J. P. Charalambos, "Visual masking". Visual Computing, Feb. 2023. <https://visualcomputing.github.io/docs/visual_illusions/masking/>
+#### *[3]* S. Raveendran, P. J. Edavoor, N. K. Yernad Balachandra and V. Moodabettu Harishchandra, "Design and implementation of image kernels using reversible logic gates," IET Image Processing, vol. 14, no 16, pp. 4110-4121, 2020, doi: 10.1049/iet-ipr.2019.1681.
+#### *[4]* R. C. Gonzalez and R. E. Woods, "Digital Image Processing," 4th ed., Pearson, 2018.
 
 {{% /justify %}}

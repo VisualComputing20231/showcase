@@ -343,9 +343,9 @@ que ya no es tan utilizado y donde el manejo de liberías está lleno de dificul
 nociones matemáticas y de coherencia temporal para crear animaciones con un acabado profesional en javascript.
 
 ## Referencias
-#### *[1]*. J. P. Charalambos, "Temporal Coherence," Visual Computing, Feb. 2023. <https://visualcomputing.github.io/docs/visual_illusions/temporal_coherence/>
-#### *[2]*. R. Parent, "Computer Animation: Algorithms and Techniques," 2nd ed. San Francisco, CA, USA: Morgan Kaufmann Publishers Inc., 2012.
-#### *[3]*. J. P. Charalambos, "nub: A library for processing large datasets in parallel," Github, 2021. <https://github.com/VisualComputing/nub>
-#### *[4]*. K. Shoemake, "Animating rotation with quaternion curves," in ACM SIGGRAPH Computer Graphics, vol. 19, no. 3, pp. 245-254, Jul. 1985, doi: 10.1145/325165.325242.
+#### *[1]* J. P. Charalambos, "Temporal Coherence," Visual Computing, Feb. 2023. <https://visualcomputing.github.io/docs/visual_illusions/temporal_coherence/>
+#### *[2]* R. Parent, "Computer Animation: Algorithms and Techniques," 2nd ed. San Francisco, CA, USA: Morgan Kaufmann Publishers Inc., 2012.
+#### *[3]* J. P. Charalambos, "nub: A library for processing large datasets in parallel," Github, 2021. <https://github.com/VisualComputing/nub>
+#### *[4]* K. Shoemake, "Animating rotation with quaternion curves," in ACM SIGGRAPH Computer Graphics, vol. 19, no. 3, pp. 245-254, Jul. 1985, doi: 10.1145/325165.325242.
 
 {{% /justify %}}
