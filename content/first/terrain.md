@@ -17,20 +17,20 @@ llevar a cabo tomando el ejercicio desarrollado como punto de partida.
 ## Marco Teórico 
 
 Las bandas de Mach (*Mach bands*, en inglés) son un fenómeno óptico que se produce cuando hay un cambio gradual
-en la intensidad de la luz en una imagen. El ojo humano tiende a percibir estas transiciones como bordes o líneas
-más definidas de lo que realmente son. Esto se debe a la forma en que el cerebro procesa la información visual.
+en la intensidad de la luz en una imagen *[1]*. El ojo humano tiende a percibir estas transiciones como bordes o líneas
+más definidas de lo que realmente son *[1]*. Esto se debe a la forma en que el cerebro procesa la información visual.
 
 Por otro lado, la generación de terreno con *Perlin noise* es un método para crear terrenos y superficies naturales
 de forma procedural. Este método utiliza una función de ruido desarrollada por Ken Perlin, en la década de 1980, que
-genera valores de ruido aleatorios pero coherentes y suaves.
+genera valores de ruido aleatorios pero coherentes y suaves *[7]*.
 
 La relación entre los *Mach bands* y la generación de terreno con *Perlin noise* es que se pueden utilizar las
 bandas de Mach para mejorar la apariencia visual de los terrenos generados con este método. Al aplicar una función
 de suavizado a los valores de ruido generados por *Perlin noise*, se pueden crear transiciones suaves entre las
-diferentes alturas del terreno. Sin embargo, estas transiciones suaves pueden producir una apariencia visual
+diferentes alturas del terreno *[4]*. Sin embargo, estas transiciones suaves pueden producir una apariencia visual
 demasiado uniforme o artificial. Por consiguiente, al aplicar una función que aumente los valores de intensidad
 cerca de las transiciones, se pueden crear efectos visuales similares a los de las bandas de Mach, que ayudan a
-definir mejor los bordes y las transiciones del terreno.
+definir mejor los bordes y las transiciones del terreno *[5]*.
 
 En resumen, las bandas de Mach se utilizan en la generación de terreno con Perlin noise como una técnica para
 mejorar la apariencia visual de los terrenos, creando efectos visuales que ayudan a definir mejor los bordes
@@ -53,10 +53,10 @@ punto. Entrando un poco más en detalle sobre cómo se realizó el ejercicio, es
 el terreno se utilizó una grilla en 3 dimensiones `(x, y, z)` con valores predeterminados para los puntos `x` y `y`.
 
 En primer lugar, se realiza una rotación sobre el eje `x` y se le asigna un valor aleatorio a la coordenada `z` entre
-un rango preestablecido. Acá es donde entra el método de *Perlin Noise*: de manera simplificada, con este método es
+un rango preestablecido *[9]*. Acá es donde entra el método de *Perlin Noise*: de manera simplificada, con este método es
 poisble asegurar que cada valor generado "aleatoriamente" para la coordenada `z`, de cada punto de la grilla,
 únicamnete diverja dentro de un rango preestablecido y, a su vez, que este rango sea dependiente de los valores en `z`
-que se encuntren alrededor del punto que se está generando. 
+que se encuntren alrededor del punto que se está generando*[9]*. 
 
 En la siguiente porción de codigo se resalta cómo se generan los valores en `z` para cada par de coordenadas `(x, y)`
 de la grilla y, también, cómo se asegura que estos valores sean acordes al método de *Perlin noise*.
@@ -201,5 +201,6 @@ function colorChange(num){
 #### *[5]* C.J. Nielsen, "Effect of Scenario and Experience on Interpretation of Mach Bands", Journal of Endodontics, vol. 27, no. 11, pp. 687-691.
 #### *[7]* R. Touti, "Perlin Noise Algorithm", [Online]. Available: https://rtouti.github.io/graphics/perlin-noise-algorithm.
 #### *[8]* J. P. Charalambos. "Temporal Coherence". Visual Computing. 2023. <https://visualcomputing.github.io/docs/visual_illusions/temporal_coherence/>
+#### *[9]* D. Shiffman, "What is a Pixel?" [Online]. Available: https://www.youtube.com/watch?v=IKB1hWWedMk&t=1s. [Accessed: Mar. 31, 2022].
 
 {{% /justify %}}

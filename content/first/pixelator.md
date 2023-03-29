@@ -18,19 +18,19 @@ que se puede llevar a cabo tomando el ejercicio desarrollado como punto de parti
 ## Marco Teórico 
 
 La coherencia espacial es un término que se utiliza en la óptica para describir la capacidad de una onda
-electromagnética para mantener una relación de fase estable en diferentes puntos del espacio. La coherencia
+electromagnética para mantener una relación de fase estable en diferentes puntos del espacio *[1]*. La coherencia
 espacial se refiere a la propiedad de la luz que hace que se comporte como una onda: esto significa que tiene
-la capacidad de interferir constructiva o destructivamente consigo misma en diferentes puntos del espacio.
+la capacidad de interferir constructiva o destructivamente consigo misma en diferentes puntos del espacio *[1]*.
 
 La coherencia espacial se utiliza en muchas aplicaciones ópticas, como la holografía, la tomografía óptica de
-coherencia y la microscopía de campo cercano. En estas aplicaciones, la coherencia espacial es esencial para la
+coherencia y la microscopía de campo cercano *[7]*. En estas aplicaciones, la coherencia espacial es esencial para la
 formación de imágenes y para obtener información detallada sobre la estructura de los objetos que se están observando.
 
 La coherencia espacial se puede cuantificar utilizando varias medidas, tales como la función de correlación espacial,
 el ancho de banda de coherencia y la longitud de coherencia: la función de correlación espacial es una medida de la
 correlación entre dos puntos de la onda en diferentes posiciones, el ancho de banda de coherencia es una medida de la
 gama de longitudes de onda que contribuyen a la coherencia de la onda y la longitud de coherencia es una medida de la
-distancia sobre la cual la onda mantiene una relación de fase estable.
+distancia sobre la cual la onda mantiene una relación de fase estable *[1]*.
 
 En resumen, la coherencia espacial es una propiedad fundamental de las ondas electromagnéticas que permite que se
 comporten como ondas y que puedan interferir constructiva o destructivamente en diferentes puntos del espacio. La
@@ -54,13 +54,13 @@ computador y modificar los pixeles provinientes de cada *frame*: es posible vari
 horizontalemnte, así como su forma y su color mediante los botones de la sección inferior.
 
 Para lograrlo, se toma cada fotograma como una matriz compuesta de pequeñas submatrices, las cuales se manipulan
-para lograr cada efecto visual propuesto. Primero, se emplea una función interna de P5 llamada **LoadPixels**,
+para lograr cada efecto visual propuesto. Primero, se emplea una función interna de P5 llamada **LoadPixels** *[10]*,
 la cual facilita el trabajo y permite usar cada *frame* como una matriz. Después, se crea una variable que
 permite manejar el valor de cada pixel a partir del tamaño de la pantalla, la posición del mouse sobre el eje `x`
-y otros valores predeterminados. Una vez definido el tamaño de los pixeles, estos se agrupan en pequeñas submatrices
+y otros valores predeterminados *[11]*. Una vez definido el tamaño de los pixeles, estos se agrupan en pequeñas submatrices
 de *4 **x** 4*: es aquí cuando se empieza a jugar con el tamaño de los pixeles. Por un lado, en caso de querer
 disminuir el número de pixeles en la transmisión, a cada pequeña submatriz se le asigna un color siguiendo el
-principio de la coherencia espacial. Una vez que todos los pixeles de esa matriz tienen el mismo color, esta pasa
+principio de la coherencia espacial *[11]*. Una vez que todos los pixeles de esa matriz tienen el mismo color, esta pasa
 a ser considerada como un único pixel, el cual ahora forma parte de una matriz más grande. Este proceso se puede
 repetir hasta llegar al mínimo de pixeles permitidos por *frame*.
 
@@ -68,7 +68,7 @@ Cabe aclarar que cada pixel debe ser escalado para que se ajuste al tamaño de l
 forma de los pixeles, dicha función se ejecuta, precisamente, sobre aquellos que están escalados. Entonces, al igual
 como se manipulan las submatrices para modificar el tamaño de los pixeles de la imagen (y su color por *spatial
 coherence*), tanto la forma como la paleta de colores se alteran siguiendo la misma lógica y empleando más funciones
-especiales de **P5js**. 
+especiales de **P5js** *[2]* *[3]* *[4]* *[5]* *[6]* *[7]*. 
 
 En la siguiente porción de código se resalta cómo se generan los valores para cada pixel y, además, cómo se van
 manipulando el tamaño, la forma o el color dependiendo de la posición del mouse y la opción que escoja el usuario.
