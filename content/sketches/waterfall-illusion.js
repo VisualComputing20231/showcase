@@ -3,7 +3,7 @@ let img = null;
 let delayTime = 200;
 let size = 560;
 let angles = 12;
-let speed = 2;
+let speed = 4;
 let anchor = 100;
 let rings = 14;
 
@@ -22,10 +22,12 @@ function setup() {
     var canvas = createCanvas(400, 400);
     canvas.parent("waterfall-illusion");
     frameRate(fr);
-    button = createButton('Reversed');
+    button = createButton('Collapse');
     button.parent("waterfall-illusion");
     button.position(0, 0, 'sticky');
-    button.mousePressed(() => { reversed = !reversed} );
+    button.mousePressed(() => { 
+        button.elt.innerText = reversed ? 'Collapse' : 'Expand';
+        reversed = !reversed} );
 };
 
 function draw() {
@@ -94,7 +96,7 @@ function draw() {
     rect(192, 199, 16, 2);
     if (frameCount % delayTime == 0) showImage = !showImage;
     if (showImage) {
-        delayTime = 250;
+        delayTime = 200;
         image(originalImage, 0, 0, 400, 400);
     } else {
         noFill();
@@ -103,6 +105,6 @@ function draw() {
         strokeWeight(100);
         circle(200,200, 500);
         noErase();
-        delayTime = 500;
+        delayTime = 600;
     }
 };

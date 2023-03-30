@@ -8,7 +8,7 @@ Para este ejercicio se definen los efectos visuales de *"Mach bands"* y *Perlin 
 que guardan al momento de generar un terreno automatizado y continuo. 
 
 Posteriormente, como ejercicio práctico, se realizó una animación a través de la implementación de un código en
-JavaScript, haciendo uso de la libreria *P5js*: esta consiste en generar terreno de manera aleatoria por medio de
+JavaScript, haciendo uso de la libreria *P5.js*: esta consiste en generar terreno de manera aleatoria por medio de
 los dos efectos visuales mencionados en el párrafo anterior.
 
 Finalmente, se discuten posibles aplicaciones de los conceptos aprendidos, así como el trabajo futuro que se puede
