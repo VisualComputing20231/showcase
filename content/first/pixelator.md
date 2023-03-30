@@ -18,7 +18,7 @@ que se puede llevar a cabo tomando el ejercicio desarrollado como punto de parti
 ## Marco Teórico 
 
 La coherencia espacial es un término que se utiliza en la óptica para describir la capacidad de una onda
-electromagnética para mantener una relación de fase estable en diferentes puntos del espacio *[1]*. La coherencia
+electromagnética para mantener una relación de fase estable en diferentes puntos del espacio. La coherencia
 espacial se refiere a la propiedad de la luz que hace que se comporte como una onda: esto significa que tiene
 la capacidad de interferir constructiva o destructivamente consigo misma en diferentes puntos del espacio *[1]*.
 
@@ -54,13 +54,13 @@ computador y modificar los pixeles provinientes de cada *frame*: es posible vari
 horizontalemnte, así como su forma y su color mediante los botones de la sección inferior.
 
 Para lograrlo, se toma cada fotograma como una matriz compuesta de pequeñas submatrices, las cuales se manipulan
-para lograr cada efecto visual propuesto. Primero, se emplea una función interna de P5 llamada **LoadPixels** *[10]*,
+para lograr cada efecto visual propuesto. Primero, se emplea una función interna de P5 llamada **LoadPixels** *[9]*,
 la cual facilita el trabajo y permite usar cada *frame* como una matriz. Después, se crea una variable que
 permite manejar el valor de cada pixel a partir del tamaño de la pantalla, la posición del mouse sobre el eje `x`
-y otros valores predeterminados *[11]*. Una vez definido el tamaño de los pixeles, estos se agrupan en pequeñas submatrices
+y otros valores predeterminados. Una vez definido el tamaño de los pixeles, estos se agrupan en pequeñas submatrices
 de *4 **x** 4*: es aquí cuando se empieza a jugar con el tamaño de los pixeles. Por un lado, en caso de querer
 disminuir el número de pixeles en la transmisión, a cada pequeña submatriz se le asigna un color siguiendo el
-principio de la coherencia espacial *[11]*. Una vez que todos los pixeles de esa matriz tienen el mismo color, esta pasa
+principio de la coherencia espacial *[10]*. Una vez que todos los pixeles de esa matriz tienen el mismo color, esta pasa
 a ser considerada como un único pixel, el cual ahora forma parte de una matriz más grande. Este proceso se puede
 repetir hasta llegar al mínimo de pixeles permitidos por *frame*.
 
@@ -331,7 +331,7 @@ function getNearestColorInPalette(colorPalette, r, g, b) {
 
 ## Referencias
 
-#### [1] J. P. Charalambos. "Temporal Coherence". Visual Computing. 2023. <https://visualcomputing.github.io/docs/visual_illusions/temporal_coherence/>
+#### [1] J. P. Charalambos. "Spatial Coherence". Visual Computing. 2023. <https://visualcomputing.github.io/docs/visual_illusions/spatial_coherence/>
 #### [2] "Kirokaze (Game Boy)", Lospec, [En línea]. Available: https://lospec.com/palette-list/kirokaze-gameboy.
 #### [3] "Funky Future 8", Lospec, [En línea]. Available: https://lospec.com/palette-list/funkyfuture-8.
 #### [4] "Fairydust 8", Lospec, [En línea]. Available: https://lospec.com/palette-list/fairydust-8.
@@ -339,8 +339,7 @@ function getNearestColorInPalette(colorPalette, r, g, b) {
 #### [6] S. Johnson, "Stephen Johnson on Digital Photography," O'Reilly, 2006, ISBN 0-596-52370-X.
 #### [7] C. Poynton, "Digital Video and HD: Algorithms and Interfaces," 2nd ed., Morgan Kaufmann, 2012, pp. 31-35, 65-68, 333, 337, ISBN 978-0-12-391926-7. [Online]. Available: https://www.sciencedirect.com/book/9780123919267/digital-video-and-hd. [Accessed: Mar. 31, 2022].
 #### [8] Daniel Shiffman, "The Nature of Code - Simulating Natural Systems with Processing," YouTube, 2012. [En línea]. Available: https://www.youtube.com/watch?v=KfLqRuFjK5g. [Accedido: Mar. 31, 2022].
-#### [9] "p5.js," [En línea]. Available: https://p5js.org/es/. [Accedido: Mar. 31, 2022].
-#### [10] The Coding Train, "What is p5.js?," YouTube, 2017. [En línea]. Available: https://www.youtube.com/watch?v=M3wTNVICUTg&t=2s. [Accedido: Mar. 31, 2022].
-#### [11] The Coding Train, "Introduction to p5.js - Variables and Drawing - p5.js Tutorial," YouTube, 2015. [En línea]. Available: https://www.youtube.com/watch?v=VYg-YdGpW1o. [Accedido: Mar. 31, 2022].
+#### [9] The Coding Train, "What is p5.js?," YouTube, 2017. [En línea]. Available: https://www.youtube.com/watch?v=M3wTNVICUTg&t=2s. [Accedido: Mar. 31, 2022].
+#### [10] The Coding Train, "Introduction to p5.js - Variables and Drawing - p5.js Tutorial," YouTube, 2015. [En línea]. Available: https://www.youtube.com/watch?v=VYg-YdGpW1o. [Accedido: Mar. 31, 2022].
 
 {{% /justify %}}
