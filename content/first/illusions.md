@@ -4,14 +4,14 @@
 
 
 {{% justify %}}
-En esta seccion se presentarán algunos fenomenos visuales y su respectiva implementación, además se proporcionara una breve explicacion junto a la fuente de donde se obtuvo la informacion. 
+En esta sección se presentarán algunos fenómenos visuales y su respectiva implementación; además, se proporcionará una breve explicación junto con la fuente de donde se obtuvo la información.
 
 ## Motion Aftereffect (Waterfall Illusion)
-### Marco Teorico
+### Marco Teórico
 
 El fenómeno de la cascada es una ilusión óptica que se produce cuando se observa una cascada o un río en movimiento y luego se mira hacia una superficie estática. La superficie estática parece moverse en la dirección opuesta al flujo original. Este efecto se debe a la adaptación del sistema visual a un estímulo en movimiento que, al desaparecer, produce un efecto residual de movimiento en la dirección opuesta. Este efecto es conocido como "inducción de movimiento".
 
-Este fenómeno ha sido observado desde la antigüedad. Lucrecio, poeta romano del siglo I a.C., describió la ilusión de que las piernas de un caballo estacionado en un río parecían moverse en la dirección opuesta al flujo del agua. El filósofo Aristóteles también hizo referencia a la percepción errónea del movimiento en el agua, aunque en su caso se trata de la percepción de que objetos estáticos parecen moverse.
+Este fenómeno ha sido observado desde la antigüedad. Lucrecio, poeta romano del siglo I a.C., describió la ilusión de que las piernas de un caballo estacionado en un río parecían moverse en la dirección opuesta al flujo del agua. El filósofo Aristóteles también hizo referencia a la percepción errónea del movimiento en el agua, aunque en su caso se tratara de la percepción de que objetos estáticos parecían moverse.
 
 Investigaciones posteriores han demostrado que el fenómeno de la cascada está mediado por procesos neuronales complejos en el cerebro que procesan y adaptan la percepción visual del movimiento. Estudios modernos han identificado las áreas cerebrales que son responsables de esta adaptación y han ayudado a explicar los mecanismos subyacentes a la ilusión de la cascada.
 
@@ -21,11 +21,11 @@ En resumen, la ilusión de la cascada es un fenómeno óptico que se produce cua
 
 Fíjate en la cruz central durante el movimiento y mira el ciclo al menos tres veces. Observa el efecto de la imagen posterior al movimiento en la figura en reposo (el Buda de Kamakura). La "deformación" causada por el efecto de la imagen posterior al movimiento se aplica a cualquier cosa que observes. También puedes intentar cubrir un ojo, adaptarte durante aproximadamente tres ciclos y luego probar con el otro ojo.
 
-Esto se explica a menudo en términos de "fatiga" de la clase de neuronas que codifican una dirección de movimiento. Sin embargo, es más preciso interpretar esto en términos de adaptación o "control de ganancia". Estos detectores de movimiento no se encuentran en la retina sino en el cerebro (Bach y Hoffmann 2000). Para obtener una explicación más detallada y una demostración interesante del "efecto cascada", consulte la página de [George Mather](http://www.georgemather.com/MotionDemos/MAEMP4.html).
+Esto se explica, a menudo, en términos de "fatiga" de la clase de neuronas que codifican una dirección de movimiento. Sin embargo, es más preciso interpretar esto en términos de adaptación o "control de ganancia". Estos detectores de movimiento no se encuentran en la retina, sino en el cerebro *[1]*. Para obtener una explicación más detallada y una demostración interesante del "efecto cascada", consulte la página de [George Mather](http://www.georgemather.com/MotionDemos/MAEMP4.html).
 
 
 
-{{< details title="Waterfall Illusion" open=false >}}
+{{< details title="Waterfall Illusion" open=true >}}
 <div style="position: relative;   
   left: 0%;
   top: 50%;
@@ -40,7 +40,7 @@ Esto se explica a menudo en términos de "fatiga" de la clase de neuronas que co
 
 ## Código y Resultados
 
-Este ejercicio se desarrolla en el efecto visual de la cascada. Para lograr el efecto de movimiento, se dibujan múltiples áreas a distintos radios, determinados por la cantidad de anillos rings. Luego, se almacenan en un array ringpos[] en orden de más grande a más pequeño y, por último, se les asigna un color blanco o negro alternadamente. También hay que notar que la función está restringida por el módulo % de un radio establecido, por lo que una vez el radio de alguna área llegue al límite (si se expande), este se devolverá al radio mínimo.
+En este ejercicio se desarrolla el efecto visual de la cascada. Para lograr la sensación de movimiento, se dibujan múltiples áreas a distintos radios, determinados por la cantidad de anillos (**rings**). Luego, se almacenan en un array **ringpos[]** en orden del más grande al más pequeño y, por último, se les asigna un color blanco o negro alternadamente. También hay que notar que la función está restringida por el módulo (%) de un radio establecido, por tanto, una vez que el radio de alguna área llega al límite (si se expande), este se devolverá al radio mínimo.
 
 {{< highlight js >}}
 for (let i = 0; i < rings; i++) {
@@ -54,7 +54,7 @@ for (let i = 0; i < rings; i++) {
     }
 {{< /highlight >}}
 
-En este caso, no se dibujan círculos completos, sino más bien arcos con un ángulo definido por la cantidad de ángulos `angles` y los radios previamente calculados. Luego, se rellenan las áreas de estos arcos cambiando su radio en cada frame. De esta manera, se logra el efecto de movimiento y el estilo cuadriculado de cada anillo.
+En este caso no se dibujan círculos completos, sino más bien arcos con un ángulo definido por la cantidad de ángulos `angles` y los radios previamente calculados. Luego, se rellenan las áreas de estos arcos cambiando su radio en cada *frame*. De esta manera, se logra el efecto de movimiento y el estilo cuadriculado de cada anillo.
 
 {{< highlight js>}}
 for (let i = 0; i < rings; i++) {
@@ -82,7 +82,7 @@ for (let i = 0; i < rings; i++) {
     }
 {{< /highlight >}}
 
-Según el frame rate, se actualiza el radio de cada arco presente, de manera que se expande o se colapsa según lo determine la variable `reversed`, que cambiará su valor de verdad presionando el respectivo botón. Para lograr que el efecto se muestre correctamente, la duración del movimiento es mucho mayor a la duración de la imagen mostrada (cerca de 3 veces más largo).
+Según el *frame rate*, se actualiza el radio de cada arco presente, de manera que se expande o se colapsa según lo que determine la variable `reversed`, que cambiará su valor de verdad presionando el respectivo botón. Para lograr que el efecto se muestre correctamente, la duración del movimiento es mucho mayor a la duración de la imagen mostrada (cerca de 3 veces más largo).
 
 Por último, se dibuja la imagen original en el centro de la pantalla. Esta imagen se carga previamente en la función `preload()` y se almacena en la variable `originalImage`. Esta imagen se muestra o no dependiendo del valor de la variable `showImage`, que se cambia cada cierto tiempo dependiendo de la variable `delayTime` y el frame actual.
 
@@ -101,7 +101,7 @@ if (frameCount % delayTime == 0) showImage = !showImage;
         delayTime = 600;
     }
 {{< /highlight>}}
-{{% /justify %}}
+
 El código completo se encuentra en el siguiente desplegable:
 
 {{< details title="**Código completo**" open=false >}}
@@ -218,10 +218,12 @@ function draw() {
 };
 
 {{< /highlight >}} {{< /details >}}
-## Trabajo futuro
+## Conclusiones y Trabajo futuro
 
-Mejorar el programa de manera que sea modificable en terminos de velocidad, cantidad de anillos y/o angulos, tamaño de la imagen, etc.
+- Es posible mejorar el programa para que sea modificable en términos de velocidad, cantidad de anillos y/o ángulos, tamaño de la imagen, etc.
+- Como trabajo futuro, se pueden investigar e implementar más fenómenos visuales.
 
-Investigar e implementar mas fenomenos visuales.
 ## Referencias
 #### *[1]* M. Bach, "Motion Aftereffect (Waterfall Illusion)" [Online]. Available: https://michaelbach.de/ot/mot-adapt/index.html.
+
+{{% /justify %}}

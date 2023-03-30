@@ -4,57 +4,60 @@
 
 
 {{% justify %}}
-En esta seccion se abordara el problema de remappear o reasignar colores de una imagen para facilitar su visualizacion por personas con visibilidad reducida. 
-{{% /justify %}} 
-# Color Blindness
-### Marco Teorico
-Cerca de 1 de cada 20 personas son daltonicas, lo que significa que tienen problemas para distinguir algunos colores.
+En esta sección se abordará el problema de "remappear" o reasignar colores a una imagen para facilitar su visualizacion por parte de personas con visibilidad reducida. 
+
+## Color Blindness
+### Marco Teórico
+Cerca de 1 de cada 20 personas son daltónicas, lo cual significa que tienen problemas para distinguir algunos colores *[1]*.
 
 El ojo humano tiene dos tipos de receptores: conos y bastones. Los bastones detectan la luz y la oscuridad, mientras que los conos detectan los colores correspondientes a las longitudes de onda de la luz roja, verde y azul.
+El daltonismo está relacionado con el tipo de cono que tiene problemas *[2]*:
 
-El daltonismo está relacionado con el tipo de cono que tiene problemas:
+- **Protanopia:** los conos de onda larga (rojos) no funcionan o están ausentes.
+- **Protanomalía:** los conos de onda larga funcionan parcialmente.
+- **Deuteranopia:** los conos de onda media (verdes) no funcionan o están ausentes.
+- **Deuteranomalía:** los conos de onda media funcionan parcialmente.
+- **Tritanopia:** los conos de onda corta (azules) no funcionan o están ausentes.
+- **Tritanomalía:** los conos de onda corta funcionan parcialmente.
+- **Acromatopsia:** ningún cono o solo un tipo de cono funciona.
 
-Protanopia: los conos de onda larga (rojos) no funcionan o están ausentes.
-Protanomalía: los conos de onda larga funcionan parcialmente.
-Deuteranopia: los conos de onda media (verdes) no funcionan o están ausentes.
-Deuteranomalía: los conos de onda media funcionan parcialmente.
-Tritanopia: los conos de onda corta (azules) no funcionan o están ausentes.
-Tritanomalía: los conos de onda corta funcionan parcialmente.
-Acromatopsia: ningún cono o solo un tipo de cono funciona.
 Técnicamente, es posible que una persona tenga más de tres tipos de conos, lo que significa que todos somos daltónicos en cierto sentido.
 
-Para para personas con daltonismo de tipo protanopia, es dificil distinguir entre el rojo y el verde. Esto se debe a que el sistema visual de estas personas no puede distinguir entre estos colores.  Podemos simular esto reemplazando colores en una imagen para crear líneas de confusión y así ver cómo se vería para alguien con daltonismo. 
+Para personas con daltonismo de tipo protanopia es difícil distinguir entre el rojo y el verde. Esto se debe a que el sistema visual de estas personas no puede distinguir entre estos colores. Podemos simular esto reemplazando colores en una imagen para crear líneas de confusión y, así, verla tal como la vería alguien con daltonismo. 
 
-
-Para ello se diseño una aplicacion que permite modificar los colores de las imagenes de un video por medio de RGB para que primeramente se imite la dificultad para distinguir colores de una imagen y posteriormente pueda modificarse para facilitar el uso a personas con discapacidad visual.
+Para ello, se diseñó una aplicacion que permite modificar los colores de las imágenes de un video por medio de RGB para que, primeramente, se imite la dificultad para distinguir colores de una imagen y, posteriormente, esta pueda modificarse para facilitar el uso a personas con discapacidad visual.
 
 ### Instrucciones
 
-Haga click o arrastre un video para que la aplicacion lo cargue.
+Haga click o arrastre un video para que la aplicación lo cargue. Puede utilizar la página *[3]* para descargar un archivo de prueba: se recomienda emplear un *mp4* con dimensiones *360 **x** 240*, dado que esta configuración se ajusta mejor a las dimensiones del *canvas*. Si lo desea, puede acceder al ejemplo en dicho formato específico siguiendo este [enlace](https://sample-videos.com/video123/mp4/240/big_buck_bunny_240p_2mb.mp4).
 
-El video iniciara automaticamente sin ningun filtro. Luego podra añadair hasta cuatro copias del video con diferentes filtros para comparar.
-
-
+El video iniciará automáticamente sin ningún filtro. Luego, podrá añadair hasta cuatro copias del video con diferentes filtros para comparar.
 
 Manipule los canales con las teclas 'r', 'g', 'b' para ver cómo se ven (aproximadamente) los colores para personas con daltonismo.
 
-Mantenga presionado la tecla SHIFT y mueva el rodillo del raton para aumentar o disminuir el valor del canal seleccionado.
+Mantenga presionado la tecla SHIFT y mueva el rodillo del ratón (o deslice dos dedos en su *touchpad*) para aumentar o disminuir el valor del canal seleccionado.
+
+Oprima la tecla 's' para guardar un pantallazo de los filtros activos en formato *jpg*.
+
+{{% /justify %}}
 
 <div style="position: relative;"> 
 {{< p5-iframe sketch="/showcase/sketches/colormapping.js" width="800" height="720" align="middle">}}
 </div>
 
+{{% justify %}}
+
 ## Código y Resultados
 
-Este ejercicio se desarrolla haciendo uso de la libreria p5.js, la cual permite la creacion de aplicaciones web interactivas y de codigo abierto. Se utiliza principalmente la funcionalidad de tomar frame por frame de un video y manipularlos para crear una nueva imagen con el methodo onSeek que se ejeuta en cada frame y hace una pausa determinada.
+Este ejercicio se desarrolla haciendo uso de la librería **p5.js**, la cual permite la creación de aplicaciones web interactivas y de código abierto. Se utiliza, principalmente, la funcionalidad de tomar *frame* por *frame* de un video y manipularlos para crear una nueva imagen con el método `onSeek` que se ejeuta en cada *frame* y hace una pausa determinada.
 
-La principal funcionalidad es manipular los pixeles de la imagen actual y reemplazarlos por los pixeles de la imagen duplicada. Para ello se utiliza el metodo `loadPixels()` que carga los pixeles de la imagen actual y el metodo `updatePixels()` que actualiza los pixeles de la imagen actual con los pixeles cargados.
+La principal funcionalidad es manipular los píxeles de la imagen actual y reemplazarlos por los píxeles de la imagen duplicada. Para ello, se utiliza el método `loadPixels()` que carga los píxeles de la imagen actual y el método `updatePixels()` que actualiza los píxeles de la imagen actual con los píxeles cargados.
 
-Se puede volver a cargar un nuevo video haciendo click en la imagen o arrastrando un nuevo video. Ademas esta disponible el boton de reiniciar el video desde el principio.
+Se puede volver a cargar un nuevo video arrastrándolo o haciendo click en la imagen. Además, está disponible el botón de reiniciar el video desde el principio.
 
-Se dispone de commandos por teclado para: guardar un pnatallazo de todos los filtros activos, las teclas para cambiar los valores de los canales RGB.
+Se dispone de comandos por teclado para guardar un pantallazo de todos los filtros activos, así como las teclas para cambiar los valores de los canales RGB.
 
-{{< details title="**Código completo**" open=false >}}
+{{< details title="**Código completo**" open=true >}}
 {{< highlight js >}}
 let video;
 let time = 0;
@@ -422,26 +425,18 @@ function mouseWheel(event) {
 {{< /highlight>}}
 {{< /details >}}
 
-{{% justify %}}
+## Conclusiones y Trabajo futuro
 
-
-{{% /justify %}}
-
-## Trabajo futuro
-
-Utilizar otros espacio de color para la manipulacion de colores como el espacio de color XYZ, HSV. Y concluir que es mas apropiado para esta tarea.
-
-Poder modificar los valores de los filtros de manera mas precisa y la velocidad o frames por segundo de la aplicacion.
-
-Mejorar la experiencia de usuario para que sea mas intuitiva y facil de usar. Reducir el tamaño de los video para que se pueda visualizar mejor.
-
-Profundizar en funciones de color para la manipulacion de colores en cada pixel, en lo posible evitar cambios constantes y acercarse a un enfoque polinomial o curvas.
-
-Utilizar a manera de filtro inverso las imagenes que logren cofundir a las personas con discapacidad visual con el programa para que este sea aplicado a voluntad segun lo requiera.
-
-Extender la aplicacion para poder ser utilizada con otros tipos de entrada como imagenes, videos, etc.
+- Se pueden utilizar otros espacios de color para la manipulación de colores, tales como el espacio de color XYZ o HSV y, adí, concluir cuál es más apropiado para esta tarea.
+- Es posible modificar los valores de los filtros de manera más precisa, y también la velocidad o *frames* por segundo de la aplicacion.
+- Como trabajo futuro, se podría mejorar la experiencia de usuario para que la aplicación sea más intuitiva y fácil de usar. Así mismo, se plantea reducir el tamaño de los videos para que se puedan visualizar mejor.
+- Adicionalmente, se propone profundizar en funciones de color para la manipulacion de colores en cada pixel y, en lo posible, evitar cambios constantes. Esto implicaría acercarse a un enfoque polinomial o curvas.
+- Es posible utilizar, a manera de filtro inverso, las imágenes que logren confundir a las personas con discapacidad visual en este programa para que sea aplicado a voluntad según se requiera.
+- Finalmente, se plantea la opción de extender la aplicación para que pueda ser utilizada con otros tipos de entrada como imágenes, videos, etc.
 
 ## Referencias
 #### *[1]* D. Nichols, "Coloring for Colorblindness" [Online]. Available: https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40.
 #### *[2]* ndesmic, "Exploring Color Math Through Color Blindness" [Online]. Available: https://dev.to/ndesmic/exploring-color-math-through-color-blindness-2m2h.
 #### *[3]* "Sample Videos" [Online]. Available: https://sample-videos.com.
+
+{{% /justify %}}
