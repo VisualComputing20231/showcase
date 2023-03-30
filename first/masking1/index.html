@@ -1,0 +1,463 @@
+<!doctype html><html lang=en dir=ltr class=scroll-smooth data-default-appearance=dark data-auto-appearance=true><head><meta charset=utf-8><meta http-equiv=content-language content="en"><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><title>&#183; Computación Visual</title><meta name=title content=" &#183; Computación Visual"><link rel=canonical href=https://visualcomputing20231.github.io/showcase/first/masking1/><link type=text/css rel=stylesheet href=/showcase/css/main.bundle.min.5cab8e19b11e31042bf6b52fb5183ca3bd18ff7ed0c63673c44c77657c766451b8a2329daa0e2ccbd673e37500a4e873e8c0aa1d5249e04e7b0c0e6ad14ad814.css integrity="sha512-XKuOGbEeMQQr9rUvtRg8o70Y/37QxjZzxEx3ZXx2ZFG4ojKdqg4sy9Zz43UApOhz6MCqHVJJ4E57DA5q0UrYFA=="><script type=text/javascript src=/showcase/js/appearance.min.a75d508cf75a202afc48fe649516720f8036bda3657897f6cc07dab21f94fa9c3933edbbfc2936f8d3a426f45ac6153237a48aec9115147c5e03db1c5b62b8bc.js integrity="sha512-p11QjPdaICr8SP5klRZyD4A2vaNleJf2zAfash+U+pw5M+27/Ck2+NOkJvRaxhUyN6SK7JEVFHxeA9scW2K4vA=="></script>
+<script src=/js/zoom.min.js></script>
+<link rel=apple-touch-icon sizes=180x180 href=/showcase/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/showcase/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/showcase/favicon-16x16.png><link rel=manifest href=/showcase/site.webmanifest><meta property="og:title" content><meta property="og:description" content="Visual Masking I> Visual Masking I # Introducción> Introducción # En esta sección se discute acerca del enmascaramiento visual, haciendo énfasis en los kinegramas y los patrones de moiré, que son fenómenos visuales estrechamente relacionados con esta acción."><meta property="og:type" content="article"><meta property="og:url" content="https://visualcomputing20231.github.io/showcase/first/masking1/"><meta property="article:section" content="first"><meta property="og:site_name" content="Computación Visual"><meta name=twitter:card content="summary"><meta name=twitter:title content><meta name=twitter:description content="Visual Masking I> Visual Masking I # Introducción> Introducción # En esta sección se discute acerca del enmascaramiento visual, haciendo énfasis en los kinegramas y los patrones de moiré, que son fenómenos visuales estrechamente relacionados con esta acción."><script type=application/ld+json>[{"@context":"https://schema.org","@type":"Article","articleSection":"Firsts","name":"","headline":"","abstract":"Visual Masking I\u003e Visual Masking I # Introducción\u003e Introducción # En esta sección se discute acerca del enmascaramiento visual, haciendo énfasis en los kinegramas y los patrones de moiré, que son fenómenos visuales estrechamente relacionados con esta acción.","inLanguage":"en","url":"https:\/\/visualcomputing20231.github.io\/showcase\/first\/masking1\/","author":{"@type":"Person","name":""},"mainEntityOfPage":"true","wordCount":"2287"}]</script><link href=https://github.com/VisualComputing20231/showcase rel=me><script src=/showcase/lib/jquery/jquery.slim.min.js integrity></script><meta name=theme-color></head><body class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"><div id=the-top class="absolute flex self-center"><a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600" href=#main-content><span class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a></div><div class=min-h-[148px]></div><div class="fixed inset-x-0 pl-[24px] pr-[24px]" style=z-index:100><div id=menu-blur class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom bg-neutral dark:bg-neutral-800"></div><div class="relative max-w-[64rem] ml-auto mr-auto"><div style=padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3"><div><a href=/showcase/ class=flex><span class=sr-only>Computación Visual</span>
+<img src=/showcase/img/logo_unal.webp width=490 height=490 class="max-h-[5rem] max-w-[5rem] object-scale-down object-left nozoom" alt="Computación Visual"></a></div><div class="flex flex-1 items-center justify-between"><nav class="flex space-x-3"><a href=/showcase/ class="text-base font-medium text-gray-500 hover:text-gray-900">Computación Visual</a></nav><nav class="hidden md:flex items-center space-x-5 md:ml-12"><div><div class="cursor-pointer flex items-center nested-menu"><a class="text-base font-medium text-gray-500 hover:text-gray-900" title>Equipo</a>
+<span><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75.0 011.06.02L10 11.168l3.71-3.938a.75.75.0 111.08 1.04l-4.25 4.5a.75.75.0 01-1.08.0l-4.25-4.5a.75.75.0 01.02-1.06z" clip-rule="evenodd"/></svg></span></span></div><div class="absolute menuhide"><div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl"><div class="flex flex-col space-y-3"><a href=/showcase/team/jpbm/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Juan Pablo Bustamante Moreno</p></a><a href=/showcase/team/nrn/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Nicolás Romero Niño</p></a><a href=/showcase/team/jjpb/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Juan José Peña Becerra</p></a></div></div></div></div><div><div class="cursor-pointer flex items-center nested-menu"><a class="text-base font-medium text-gray-500 hover:text-gray-900" title>Primera Entrega</a>
+<span><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75.0 011.06.02L10 11.168l3.71-3.938a.75.75.0 111.08 1.04l-4.25 4.5a.75.75.0 01-1.08.0l-4.25-4.5a.75.75.0 01.02-1.06z" clip-rule="evenodd"/></svg></span></span></div><div class="absolute menuhide"><div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl"><div class="flex flex-col space-y-3"><a href=/showcase/first/illusions/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Visual Illusions</p></a><a href=/showcase/first/coloring/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Coloring</p></a><a href=/showcase/first/terrain/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Mach Bands</p></a><a href=/showcase/first/masking1/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Masking I: Moiré Patterns & Kinegrams</p></a><a href=/showcase/first/masking2/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Masking II: Convolution Masks</p></a><a href=/showcase/first/pixelator/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Spatial Coherence</p></a><a href=/showcase/first/keyframes/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Temporal Coherence</p></a><a href=/showcase/first/depth/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Depth Perception</p></a></div></div></div></div></nav><div class="flex md:hidden items-center space-x-5 md:ml-12"><span></span></div></div><div class="-my-2 -mr-2 md:hidden"><label id=menu-button for=menu-controller class=block><input type=checkbox id=menu-controller class=hidden><div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentcolor" d="M0 96C0 78.33 14.33 64 32 64H416c17.7.0 32 14.33 32 32 0 17.7-14.3 32-32 32H32C14.33 128 0 113.7.0 96zM0 256c0-17.7 14.33-32 32-32H416c17.7.0 32 14.3 32 32s-14.3 32-32 32H32c-17.67.0-32-14.3-32-32zM416 448H32c-17.67.0-32-14.3-32-32s14.33-32 32-32H416c17.7.0 32 14.3 32 32s-14.3 32-32 32z"/></svg></span></div><div id=menu-wrapper style=padding-top:5px class="fixed inset-0 z-30 invisible w-screen h-screen m-auto overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50"><ul class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl"><li><span class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentcolor" d="M310.6 361.4c12.5 12.5 12.5 32.75.0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3 54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75.0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75.0-45.25s32.75-12.5 45.25.0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25.0s12.5 32.75.0 45.25l-105.4 105.4L310.6 361.4z"/></svg></span></span></li><li class=mt-1><a class="flex items-center"><p class="text-bg font-bg text-gray-500 hover:text-gray-900" title>Equipo</p><span><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75.0 011.06.02L10 11.168l3.71-3.938a.75.75.0 111.08 1.04l-4.25 4.5a.75.75.0 01-1.08.0l-4.25-4.5a.75.75.0 01.02-1.06z" clip-rule="evenodd"/></svg></span></span></a></li><li class=mt-1><a href=/showcase/team/jpbm/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Juan Pablo Bustamante Moreno</p></a></li><li class=mt-1><a href=/showcase/team/nrn/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Nicolás Romero Niño</p></a></li><li class=mt-1><a href=/showcase/team/jjpb/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Juan José Peña Becerra</p></a></li><li class=mb-2></li><li class=mt-1><a class="flex items-center"><p class="text-bg font-bg text-gray-500 hover:text-gray-900" title>Primera Entrega</p><span><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75.0 011.06.02L10 11.168l3.71-3.938a.75.75.0 111.08 1.04l-4.25 4.5a.75.75.0 01-1.08.0l-4.25-4.5a.75.75.0 01.02-1.06z" clip-rule="evenodd"/></svg></span></span></a></li><li class=mt-1><a href=/showcase/first/illusions/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Visual Illusions</p></a></li><li class=mt-1><a href=/showcase/first/coloring/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Coloring</p></a></li><li class=mt-1><a href=/showcase/first/terrain/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Mach Bands</p></a></li><li class=mt-1><a href=/showcase/first/masking1/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Masking I: Moiré Patterns & Kinegrams</p></a></li><li class=mt-1><a href=/showcase/first/masking2/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Masking II: Convolution Masks</p></a></li><li class=mt-1><a href=/showcase/first/pixelator/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Spatial Coherence</p></a></li><li class=mt-1><a href=/showcase/first/keyframes/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Temporal Coherence</p></a></li><li class=mt-1><a href=/showcase/first/depth/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Depth Perception</p></a></li><li class=mb-2></li></ul></div></label></div></div></div></div><script>window.addEventListener("scroll",function(){var t=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0,n=document.getElementById("menu-blur");n.style.opacity=t/300})</script><div class="relative flex flex-col grow"><main id=main-content class=grow><article><header id=single_header class="mt-5 max-w-prose"><h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral"></h1><div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden"><div class="flex flex-row flex-wrap items-center"><span>2287 words</span><span class="px-2 text-primary-500">&#183;</span><span title="Reading time">11 mins</span><span class="px-2 text-primary-500">&#183;</span><span>
+<span id=views_first/masking1.md title=views>0</span>
+<span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentcolor" d="M288 32c-80.8.0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7.0 24.6C17.3 304 48.6 356 95.4 399.4 142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1 3.3-7.9 3.3-16.7.0-24.6-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144 64.5-144 144-144 144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64-11.5.0-22.3-3-31.6-8.4-.2 2.8-.4 5.5-.4 8.4.0 53 43 96 96 96s96-43 96-96-43-96-96-96c-2.8.0-5.6.1-8.4.4 5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></span></span><span class="px-2 text-primary-500">&#183;</span><span>
+<span id=likes_first/masking1.md title=likes>0</span>
+<span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M47.6 300.4 228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6.0 115.2.0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></span></span></span><span class="px-2 text-primary-500">&#183;</span><span>
+<button id=likes_button class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400" onclick=process_article()>
+<span id=likes_button_heart style=display:none class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M47.6 300.4 228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6.0 115.2.0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></span></span><span id=likes_button_emtpty_heart class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M244 84l11.1 12 12-11.98C300.6 51.37 347 36.51 392.6 44.1 461.5 55.58 512 115.2 512 185.1V190.9c0 41.5-17.2 81.2-47.6 109.5L283.7 469.1c-7.5 7-17.4 10.9-27.7 10.9S235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1.0 232.4.0 190.9V185.1c0-69.9 50.52-129.52 119.4-141 44.7-7.59 92 7.27 124.6 39.9C243.1 84 244 84.01 244 84zm11.1 79.9-45-46.8c-21.7-20.82-52.5-30.7-82.8-25.66C81.55 99.07 48 138.7 48 185.1V190.9c0 28.2 11.71 55.2 32.34 74.4L256 429.3l175.7-164c20.6-19.2 32.3-46.2 32.3-74.4V185.1c0-46.4-33.6-86.03-79.3-93.66C354.4 86.4 323.6 96.28 301.9 117.1l-46.8 46.8z"/></svg></span></span><span id=likes_button_text>&nbsp;Like</span></button></span></div></div></header><section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row"><div class="min-w-0 min-h-0 max-w-prose"><div id=visual-masking-i class=anchor>Visual Masking I></div><h1 class="relative group">Visual Masking I
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#visual-masking-i aria-label=Anchor>#</a></span></h1><div style=text-align:justify;text-justify:inter-word><div id=introducción class=anchor>Introducción></div><h2 class="relative group">Introducción
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#introducci%c3%b3n aria-label=Anchor>#</a></span></h2><p>En esta sección se discute acerca del enmascaramiento visual, haciendo énfasis en los kinegramas
+y los patrones de moiré, que son fenómenos visuales estrechamente relacionados con esta acción.</p><p>Acto seguido, se desarrollan varios ejercicios relacionados con tales conceptos. En
+particular, se llevó a cabo un programa que genera un kinegrama a partir de un <em>gif</em>, así
+como un patrón de moiré en dos dimensiones y otro en tres dimensiones.</p><p>Para terminar, se discuten posibles aplicaciones de los conceptos aprendidos, así
+como el trabajo futuro que se puede desarrollar mediante este tipo de patrones y animaciones.</p><div id=marco-teórico class=anchor>Marco Teórico></div><h2 class="relative group">Marco Teórico
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#marco-te%c3%b3rico aria-label=Anchor>#</a></span></h2><p>El enmascaramiento visual es un fenómeno perceptual en el que la visibilidad
+de un estímulo se ve afectada por la presentación simultánea de otro estímulo:
+el que afecta la visibilidad del otro se conoce como enmascarador o máscara
+y puede ser presentado antes, después, o al mismo tiempo que el estímulo objetivo.
+Este fenómeno puede ocurrir tanto en la visión consciente como en la no consciente,
+y puede tener implicaciones en la percepción visual, la atención y la memoria <em>[1]</em>.</p><p>A continuación, se exponen los ejemplos de enmascaramiento visual que competen a esta sección:</p><ul><li><strong>Patrones de moiré:</strong></li></ul><p>Los patrones de moiré son un ejemplo de <em>visual masking</em> en el que se produce una
+interferencia entre dos patrones de líneas superpuestas con una ligera diferencia en su
+orientación o frecuencia espacial. El resultado es una percepción errónea de los patrones de líneas,
+con la aparición de un nuevo patrón que puede parecer más denso, más oscuro o con un patrón diferente
+al original. Este fenómeno puede tener aplicaciones en la detección de irregularidades en superficies
+o la verificación de seguridad en tarjetas de crédito o documentos de identidad <em>[2]</em>.</p><ul><li><strong>Kinegramas:</strong></li></ul><p>Los kinegramas son una técnica de impresión en la que se superponen patrones de líneas de diferentes
+tamaños y orientaciones para crear una imagen con efectos de movimiento y cambios de color. Se utilizan,
+comúnmente, como medida de seguridad en billetes, pasaportes y otros documentos oficiales, pues están
+hechos de patrones de líneas finas y detallados que, cuando se ven desde diferentes ángulos o se mueven,
+crean un efecto de profundidad y movimiento que es difícil de reproducir o falsificar <em>[3]</em>.</p><p>En general, el proceso de creación de un kinegrama está compuesto por los siguientes pasos elementales <em>[4]</em>:</p><ol><li>Seleccionar un conjunto de imágenes que tengan el mismo tamaño y que representen una secuencia
+de movimiento suave o una transformación gradual, como una rotación o un cambio de forma.</li><li>Superponer estas imágenes con un patrón de rejilla o de líneas finas.</li><li>Ajustar la frecuencia y la velocidad del movimiento o la transformación para crear una
+animación fluida.</li></ol><div id=código-y-resultados class=anchor>Código y Resultados:></div><h2 class="relative group">Código y Resultados:
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#c%c3%b3digo-y-resultados aria-label=Anchor>#</a></span></h2><p>Inicialmente, se realizaron dos implementaciones de patrones de moiré: la primera de ellas se trata de
+dos conjuntos de círculos concentricos, donde el segundo grupo se desplaza horizontalmente. Es posible
+mover el <em>slider</em> para aumentar o disminuir la velocidad de tal desplazamiento.</p><details><summary><strong>Código completo</strong></summary><div class=markdown-inner><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>let</span> <span class=nx>direction</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>setup</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>createCanvas</span><span class=p>(</span><span class=mi>650</span><span class=p>,</span> <span class=mi>500</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>ellipseMode</span><span class=p>(</span><span class=nx>RADIUS</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider</span> <span class=o>=</span> <span class=nx>createSlider</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>100</span><span class=p>,</span> <span class=mi>50</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider</span><span class=p>.</span><span class=nx>position</span><span class=p>(</span><span class=nx>width</span><span class=o>/</span><span class=mi>3</span><span class=p>,</span> <span class=p>(</span><span class=mi>9</span> <span class=o>*</span> <span class=nx>height</span><span class=p>)</span> <span class=o>/</span> <span class=mi>10</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider</span><span class=p>.</span><span class=nx>style</span><span class=p>(</span><span class=s1>&#39;width&#39;</span><span class=p>,</span> <span class=s1>&#39;250px&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>draw</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>background</span><span class=p>(</span><span class=mi>255</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>frameRate</span><span class=p>(</span><span class=nx>slider</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>frameCount</span> <span class=o>%</span> <span class=nx>width</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nx>direction</span> <span class=o>=</span> <span class=o>!</span><span class=nx>direction</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>8</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;=</span> <span class=nx>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>;</span> <span class=nx>i</span><span class=o>+=</span><span class=mi>8</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>noFill</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=nx>strokeWeight</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nx>ellipse</span><span class=p>(</span><span class=nx>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=nx>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=nx>i</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=nx>direction</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=nx>ellipse</span><span class=p>(</span><span class=nx>frameCount</span> <span class=o>%</span> <span class=nx>width</span><span class=p>,</span> <span class=nx>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=nx>i</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span>
+</span></span><span class=line><span class=cl>            <span class=nx>ellipse</span><span class=p>(</span><span class=nx>width</span> <span class=o>-</span> <span class=p>(</span><span class=nx>frameCount</span> <span class=o>%</span> <span class=nx>width</span><span class=p>),</span> <span class=nx>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=nx>i</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div></details></div><iframe id=moire1 style=width:670px;height:520px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script src=/showcase/sketches/moire1.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe><div style=text-align:justify;text-justify:inter-word><p>De este código se destaca la manera en que se trazan los círculos en movimiento:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=nx>direction</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>ellipse</span><span class=p>(</span><span class=nx>frameCount</span> <span class=o>%</span> <span class=nx>width</span><span class=p>,</span> <span class=nx>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=nx>i</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=k>else</span>
+</span></span><span class=line><span class=cl>    <span class=nx>ellipse</span><span class=p>(</span><span class=nx>width</span> <span class=o>-</span> <span class=p>(</span><span class=nx>frameCount</span> <span class=o>%</span> <span class=nx>width</span><span class=p>),</span> <span class=nx>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=nx>i</span><span class=p>);</span></span></span></code></pre></div><p>Aquí, <strong>direction</strong> es un valor booleano que cambia cada vez que <code>frameCount % width == 0</code>:
+así se consigue que cambie el sentido de izquierda a derecha y viceversa, dado que cambia
+la coordenada en <em>x</em> mientras que lo demás permanece igual.</p><p>Una vez se ha interiorizado el concepto mediante esta implementación sencilla, se procede
+con una más compleja, pues se trata de una animación en tres dimensiones que emplea color.
+De manera análoga, es posible cambiar la velocidad de rotación de cada patrón mediante el
+<em>slider</em> cuyo color coincide con las líneas (solo que, en este caso, deslizar hacia la
+izquierda incrementa la velocidad, mientras deslizar a la derecha hace que disminuya).
+Por otra parte, el ángulo de la cámara es mutable presionando las teclas de &ldquo;flecha
+derecha&rdquo; y &ldquo;flecha izquierda&rdquo; para tener la vista frontal o posterior, respectivamente.</p><details><summary><strong>Código completo</strong></summary><div class=markdown-inner><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>setup</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>createCanvas</span><span class=p>(</span><span class=mi>700</span><span class=p>,</span> <span class=mi>700</span><span class=p>,</span> <span class=nx>WEBGL</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>slider1</span> <span class=o>=</span> <span class=nx>createSlider</span><span class=p>(</span><span class=mi>5000</span><span class=p>,</span> <span class=mi>20000</span><span class=p>,</span> <span class=mi>10000</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider1</span><span class=p>.</span><span class=nx>position</span><span class=p>(</span><span class=nx>width</span><span class=o>/</span><span class=mi>3</span><span class=p>,</span> <span class=mi>30</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider1</span><span class=p>.</span><span class=nx>style</span><span class=p>(</span><span class=s1>&#39;width&#39;</span><span class=p>,</span> <span class=s1>&#39;250px&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider1</span><span class=p>.</span><span class=nx>style</span><span class=p>(</span><span class=s1>&#39;accent-color&#39;</span><span class=p>,</span> <span class=s1>&#39;red&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>slider2</span> <span class=o>=</span> <span class=nx>createSlider</span><span class=p>(</span><span class=mi>5000</span><span class=p>,</span> <span class=mi>20000</span><span class=p>,</span> <span class=mi>10000</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider2</span><span class=p>.</span><span class=nx>position</span><span class=p>(</span><span class=nx>width</span><span class=o>/</span><span class=mi>12</span><span class=p>,</span> <span class=nx>height</span><span class=o>-</span><span class=mi>50</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider2</span><span class=p>.</span><span class=nx>style</span><span class=p>(</span><span class=s1>&#39;width&#39;</span><span class=p>,</span> <span class=s1>&#39;250px&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider2</span><span class=p>.</span><span class=nx>style</span><span class=p>(</span><span class=s1>&#39;accent-color&#39;</span><span class=p>,</span> <span class=s1>&#39;green&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>slider3</span> <span class=o>=</span> <span class=nx>createSlider</span><span class=p>(</span><span class=mi>5000</span><span class=p>,</span> <span class=mi>20000</span><span class=p>,</span> <span class=mi>10000</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider3</span><span class=p>.</span><span class=nx>position</span><span class=p>(</span><span class=mi>7</span><span class=o>*</span><span class=nx>width</span><span class=o>/</span><span class=mi>12</span><span class=p>,</span> <span class=nx>height</span><span class=o>-</span><span class=mi>50</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider3</span><span class=p>.</span><span class=nx>style</span><span class=p>(</span><span class=s1>&#39;width&#39;</span><span class=p>,</span> <span class=s1>&#39;250px&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider3</span><span class=p>.</span><span class=nx>style</span><span class=p>(</span><span class=s1>&#39;accent-color&#39;</span><span class=p>,</span> <span class=s1>&#39;blue&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>cam</span> <span class=o>=</span> <span class=nx>createCamera</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nx>cam</span><span class=p>.</span><span class=nx>setPosition</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>600</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>draw</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>background</span><span class=p>(</span><span class=mi>255</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>strokeWeight</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>rotateX</span><span class=p>(</span><span class=o>-</span><span class=nx>millis</span><span class=p>()</span><span class=o>/</span><span class=nx>slider1</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=nx>lines</span><span class=p>(</span><span class=s1>&#39;red&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>rotateX</span><span class=p>(</span><span class=nx>millis</span><span class=p>()</span><span class=o>/</span><span class=nx>slider1</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=nx>rotateY</span><span class=p>(</span><span class=o>-</span><span class=nx>millis</span><span class=p>()</span><span class=o>/</span><span class=nx>slider2</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=nx>lines</span><span class=p>(</span><span class=s1>&#39;green&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>rotateY</span><span class=p>(</span><span class=nx>millis</span><span class=p>()</span><span class=o>/</span><span class=nx>slider2</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=nx>rotateZ</span><span class=p>(</span><span class=o>-</span><span class=nx>millis</span><span class=p>()</span><span class=o>/</span><span class=nx>slider3</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=nx>lines</span><span class=p>(</span><span class=s1>&#39;blue&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>keyIsDown</span><span class=p>(</span><span class=nx>LEFT_ARROW</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>cam</span><span class=p>.</span><span class=nx>setPosition</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=o>-</span><span class=mi>600</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>cam</span><span class=p>.</span><span class=nx>lookAt</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>keyIsDown</span><span class=p>(</span><span class=nx>RIGHT_ARROW</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>cam</span><span class=p>.</span><span class=nx>setPosition</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>600</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>cam</span><span class=p>.</span><span class=nx>lookAt</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>lines</span><span class=p>(</span><span class=nx>color</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>stroke</span><span class=p>(</span><span class=nx>color</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>160</span> <span class=o>-</span> <span class=nx>width</span><span class=o>/</span><span class=mi>2</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;=</span> <span class=nx>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>160</span><span class=p>;</span> <span class=nx>i</span> <span class=o>+=</span> <span class=mi>5</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>line</span><span class=p>(</span><span class=nx>i</span><span class=p>,</span> <span class=mi>160</span> <span class=o>-</span> <span class=nx>height</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=nx>i</span><span class=p>,</span> <span class=nx>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>160</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div></details></div><iframe id=moire2 style=width:720px;height:720px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script src=/showcase/sketches/moire2.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe><div style=text-align:justify;text-justify:inter-word>En este programa se destaca la manera en que se logran las rotaciones:<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=nx>rotateX</span><span class=p>(</span><span class=o>-</span><span class=nx>millis</span><span class=p>()</span><span class=o>/</span><span class=nx>slider1</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=nx>lines</span><span class=p>(</span><span class=s1>&#39;red&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>rotateX</span><span class=p>(</span><span class=nx>millis</span><span class=p>()</span><span class=o>/</span><span class=nx>slider1</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=nx>rotateY</span><span class=p>(</span><span class=o>-</span><span class=nx>millis</span><span class=p>()</span><span class=o>/</span><span class=nx>slider2</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=nx>lines</span><span class=p>(</span><span class=s1>&#39;green&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>rotateY</span><span class=p>(</span><span class=nx>millis</span><span class=p>()</span><span class=o>/</span><span class=nx>slider2</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=nx>rotateZ</span><span class=p>(</span><span class=o>-</span><span class=nx>millis</span><span class=p>()</span><span class=o>/</span><span class=nx>slider3</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=nx>lines</span><span class=p>(</span><span class=s1>&#39;blue&#39;</span><span class=p>);</span></span></span></code></pre></div><p>Dado que las funciones <em>rotateX</em>, <em>rotateY</em> y <em>rotateZ</em> afectan a todos los elementos que se dibujen
+después de haberlas mencionado, fue necesario volver a aplicar <em>rotateX</em> con la misma magnitud pero
+el sentido opuesto para que el segundo patrón rotara únicamente en el eje <em>y</em>. Del mismo modo se volvió
+a aplicar <em>rotateY</em> al dibujar el tercer patrón para que este rotara tan solo en el eje <em>z</em>. Así se
+consiguió que cada conjunto de líneas girara sobre un eje distinto.</p><p>Para el próximo ejercicio, partiendo de los pasos descritos en el marco teórico para crear un kiengrama,
+se implementó un programa que, tomando un archivo de tipo <em>gif</em>, extrajera sus primeros 20 fotogramas y
+construyera tal animación. Con el botón de la parte inferior es posible mostrar y ocultar la máscara,
+mientras que el slider permite controlar su velocidad.</p><details><summary><strong>Código completo</strong></summary><div class=markdown-inner><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>let</span> <span class=nx>keyframes</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>kinegram</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>overlay</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>animate</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>gif</span><span class=p>;</span> <span class=kd>let</span> <span class=nx>newGif</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>gifLoading</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>uploaded</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>preload</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gif</span> <span class=o>=</span> <span class=nx>loadImage</span><span class=p>(</span><span class=s2>&#34;../assets/example.gif&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>setup</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>createCanvas</span><span class=p>(</span><span class=mi>600</span><span class=p>,</span> <span class=mi>600</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>imageMode</span><span class=p>(</span><span class=nx>CENTER</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>textAlign</span><span class=p>(</span><span class=nx>CENTER</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=nx>uploaded</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>newGif</span> <span class=o>=</span> <span class=nx>createFileInput</span><span class=p>(</span><span class=nx>handleFile</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>newGif</span><span class=p>.</span><span class=nx>position</span><span class=p>(</span><span class=nx>width</span> <span class=o>/</span> <span class=mi>3</span><span class=p>,</span> <span class=nx>height</span> <span class=o>/</span> <span class=mi>8</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nx>slider</span> <span class=o>=</span> <span class=nx>createSlider</span><span class=p>(</span><span class=mi>5</span><span class=p>,</span> <span class=mi>25</span><span class=p>,</span> <span class=mi>5</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>slider</span><span class=p>.</span><span class=nx>position</span><span class=p>((</span><span class=mi>3</span> <span class=o>*</span> <span class=nx>width</span><span class=p>)</span> <span class=o>/</span> <span class=mi>5</span><span class=p>,</span> <span class=p>(</span><span class=mi>5</span> <span class=o>*</span> <span class=nx>height</span><span class=p>)</span> <span class=o>/</span> <span class=mi>6</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>slider</span><span class=p>.</span><span class=nx>style</span><span class=p>(</span><span class=s1>&#39;width&#39;</span><span class=p>,</span> <span class=s1>&#39;100px&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>gif</span><span class=p>.</span><span class=nx>resize</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>300</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=mi>20</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>gif</span><span class=p>.</span><span class=nx>setFrame</span><span class=p>(</span><span class=nx>i</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nx>keyframes</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span> <span class=o>=</span> <span class=nx>createImage</span><span class=p>(</span><span class=nx>gif</span><span class=p>.</span><span class=nx>width</span><span class=p>,</span> <span class=nx>gif</span><span class=p>.</span><span class=nx>height</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>gif</span><span class=p>.</span><span class=nx>loadPixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nx>keyframes</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>loadPixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>j</span> <span class=o>&lt;</span> <span class=nx>gif</span><span class=p>.</span><span class=nx>width</span><span class=p>;</span> <span class=nx>j</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>k</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>k</span> <span class=o>&lt;</span> <span class=nx>gif</span><span class=p>.</span><span class=nx>height</span><span class=p>;</span> <span class=nx>k</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>keyframes</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>set</span><span class=p>(</span><span class=nx>j</span><span class=p>,</span> <span class=nx>k</span><span class=p>,</span> <span class=nx>gif</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>j</span><span class=p>,</span> <span class=nx>k</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=nx>keyframes</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>updatePixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>kinegram</span> <span class=o>=</span> <span class=nx>createImage</span><span class=p>(</span><span class=nx>keyframes</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>width</span><span class=p>,</span> <span class=nx>keyframes</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>height</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>kinegram</span><span class=p>.</span><span class=nx>loadPixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>overlay</span> <span class=o>=</span> <span class=nx>createImage</span><span class=p>(</span><span class=nx>keyframes</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>width</span><span class=p>,</span> <span class=nx>keyframes</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>height</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>overlay</span><span class=p>.</span><span class=nx>loadPixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>x</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>x</span> <span class=o>&lt;</span> <span class=nx>overlay</span><span class=p>.</span><span class=nx>width</span><span class=p>;</span> <span class=nx>x</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>y</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>y</span> <span class=o>&lt;</span> <span class=nx>overlay</span><span class=p>.</span><span class=nx>height</span><span class=p>;</span> <span class=nx>y</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=kd>let</span> <span class=nx>index</span> <span class=o>=</span> <span class=kr>int</span><span class=p>(</span><span class=nx>x</span><span class=o>/</span><span class=mf>0.25</span><span class=p>)</span> <span class=o>%</span> <span class=nx>keyframes</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=nx>x</span> <span class=o>&lt;</span> <span class=nx>kinegram</span><span class=p>.</span><span class=nx>width</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>kinegram</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>,</span> <span class=nx>keyframes</span><span class=p>[</span><span class=nx>index</span><span class=p>].</span><span class=nx>get</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=nx>index</span> <span class=o>&gt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>overlay</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>,</span> <span class=nx>color</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>255</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>overlay</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>,</span> <span class=nx>color</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>kinegram</span><span class=p>.</span><span class=nx>updatePixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nx>overlay</span><span class=p>.</span><span class=nx>updatePixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>button</span> <span class=o>=</span> <span class=nx>createButton</span><span class=p>(</span><span class=s1>&#39;Toggle Overlay&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>button</span><span class=p>.</span><span class=nx>position</span><span class=p>(</span><span class=nx>width</span> <span class=o>/</span> <span class=mi>4</span><span class=p>,</span> <span class=p>(</span><span class=mi>5</span> <span class=o>*</span> <span class=nx>height</span><span class=p>)</span> <span class=o>/</span> <span class=mi>6</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>button</span><span class=p>.</span><span class=nx>mousePressed</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=p>{</span><span class=nx>animate</span> <span class=o>=</span> <span class=o>!</span><span class=nx>animate</span><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>draw</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>background</span><span class=p>(</span><span class=mi>255</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=nx>gifLoading</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>image</span><span class=p>(</span><span class=nx>kinegram</span><span class=p>,</span> <span class=nx>width</span> <span class=o>/</span> <span class=mi>2</span><span class=p>,</span> <span class=nx>height</span> <span class=o>/</span> <span class=mi>2</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=nx>animate</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=nx>frameRate</span><span class=p>(</span><span class=nx>slider</span><span class=p>.</span><span class=nx>value</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>            <span class=nx>image</span><span class=p>(</span><span class=nx>overlay</span><span class=p>,</span> <span class=p>(</span><span class=nx>frameCount</span> <span class=o>*</span> <span class=mi>4</span><span class=p>)</span> <span class=o>%</span> <span class=nx>width</span><span class=p>,</span> <span class=nx>height</span> <span class=o>/</span> <span class=mi>2</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>handleFile</span><span class=p>(</span><span class=nx>file</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gifLoading</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gif</span> <span class=o>=</span> <span class=nx>createImg</span><span class=p>(</span><span class=nx>file</span><span class=p>.</span><span class=nx>data</span><span class=p>,</span> <span class=s2>&#34;&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gif</span><span class=p>.</span><span class=nx>hide</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>gifSrc</span> <span class=o>=</span> <span class=nx>gif</span><span class=p>.</span><span class=nx>attribute</span><span class=p>(</span><span class=s2>&#34;src&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gif</span> <span class=o>=</span> <span class=nx>loadImage</span><span class=p>(</span><span class=nx>gifSrc</span><span class=p>,</span> <span class=nx>gifLoaded</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>gifLoaded</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gifLoading</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>uploaded</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>setup</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div></details></div><iframe style=width:620px;height:620px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script>
+              
+
+let keyframes = [];
+let kinegram;
+let overlay;
+let animate = false;
+let gif; let newGif;
+let gifLoading = false;
+let uploaded = false;
+
+function preload(){
+gif = loadImage(&#34;../assets/example.gif&#34;)
+}
+
+function setup() {
+createCanvas(600, 600);
+imageMode(CENTER);
+textAlign(CENTER);
+
+    if (!uploaded){
+        newGif = createFileInput(handleFile);
+        newGif.position(width / 3, height / 8);
+
+        slider = createSlider(5, 25, 5);
+        slider.position((3 * width) / 5, (5 * height) / 6);
+        slider.style('width', '100px');
+    }
+
+    gif.resize(0,300)
+
+    for (let i = 0; i < 20; i++) {
+        gif.setFrame(i)
+        keyframes[i] = createImage(gif.width, gif.height);
+        gif.loadPixels();
+        keyframes[i].loadPixels();
+        for (let j = 0; j < gif.width; j++) {
+            for (let k = 0; k < gif.height; k++) {
+                keyframes[i].set(j, k, gif.get(j, k));
+            }
+        }
+        keyframes[i].updatePixels();
+    }
+
+    kinegram = createImage(keyframes[0].width, keyframes[0].height);
+    kinegram.loadPixels();
+
+    overlay = createImage(keyframes[0].width, keyframes[0].height);
+    overlay.loadPixels();
+
+    for (let x = 0; x < overlay.width; x++) {
+        for (let y = 0; y < overlay.height; y++) {
+            let index = int(x/0.25) % keyframes.length;
+            if (x < kinegram.width) {
+                kinegram.set(x, y, keyframes[index].get(x, y));
+            }
+            if (index > 0) {
+                overlay.set(x, y, color(0, 255));
+            } else {
+                overlay.set(x, y, color(0, 0));
+            }
+        }
+    }
+
+    kinegram.updatePixels();
+    overlay.updatePixels();
+
+    button = createButton('Toggle Overlay');
+    button.position(width / 4, (5 * height) / 6);
+    button.mousePressed(() => {animate = !animate});
+
+}
+
+
+function draw() {
+background(255);
+if(!gifLoading){
+image(kinegram, width / 2, height / 2);
+if (animate){
+frameRate(slider.value());
+image(overlay, (frameCount * 4) % width, height / 2);
+}
+}
+}
+
+function handleFile(file) {
+gifLoading = true;
+gif = createImg(file.data, &#34;&#34;);
+gif.hide();
+let gifSrc = gif.attribute(&#34;src&#34;);
+gif = loadImage(gifSrc, gifLoaded);
+}
+
+function gifLoaded() {
+gifLoading = false;
+uploaded = true;
+setup();
+}
+
+
+            </script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe><div style=text-align:justify;text-justify:inter-word><p>Por otra parte, con el botón de la parte superior es posible cargar cualquier <em>gif</em> desde la máquina local.
+Es importante tener en cuenta que su tamaño será reajustado a las proporciones del canvas. A continuación
+se deja una carpeta con archivos de prueba que se pueden cargar:</p><p><a href="https://drive.google.com/file/d/1UebYMcJYYfLnTYYtmSH6sk0UliLjAEZL/view?usp=share_link" target=_blank><img src=../assets/downloadButton.png width=200px></a></p><p>Aquí hay varias secciones del código que se destacan: en primera medida, se tiene el ciclo empleado para
+extraer los fotogramas del <em>gif</em>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=mi>20</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gif</span><span class=p>.</span><span class=nx>setFrame</span><span class=p>(</span><span class=nx>i</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>keyframes</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span> <span class=o>=</span> <span class=nx>createImage</span><span class=p>(</span><span class=nx>gif</span><span class=p>.</span><span class=nx>width</span><span class=p>,</span> <span class=nx>gif</span><span class=p>.</span><span class=nx>height</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gif</span><span class=p>.</span><span class=nx>loadPixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nx>keyframes</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>loadPixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>j</span> <span class=o>&lt;</span> <span class=nx>gif</span><span class=p>.</span><span class=nx>width</span><span class=p>;</span> <span class=nx>j</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>k</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>k</span> <span class=o>&lt;</span> <span class=nx>gif</span><span class=p>.</span><span class=nx>height</span><span class=p>;</span> <span class=nx>k</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>keyframes</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>set</span><span class=p>(</span><span class=nx>j</span><span class=p>,</span> <span class=nx>k</span><span class=p>,</span> <span class=nx>gif</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>j</span><span class=p>,</span> <span class=nx>k</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>keyframes</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>updatePixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div><p>Como se puede observar, se utiliza la función <strong>setFrame</strong> para obtener el fotograma y, luego, se cargan
+sus pixeles en otra imagen, la cual se almacena en un arreglo. Con los ciclos anidades se itera a través
+de los pixeles para copiarlos en la nueva imagen; finalmente, los pixeles se actualizan.</p><p>El kinegrama y la máscara se crean usando un ciclo parecido al anterior:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>x</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>x</span> <span class=o>&lt;</span> <span class=nx>overlay</span><span class=p>.</span><span class=nx>width</span><span class=p>;</span> <span class=nx>x</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>y</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>y</span> <span class=o>&lt;</span> <span class=nx>overlay</span><span class=p>.</span><span class=nx>height</span><span class=p>;</span> <span class=nx>y</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kd>let</span> <span class=nx>index</span> <span class=o>=</span> <span class=kr>int</span><span class=p>(</span><span class=nx>x</span><span class=o>/</span><span class=mf>0.25</span><span class=p>)</span> <span class=o>%</span> <span class=nx>keyframes</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=nx>x</span> <span class=o>&lt;</span> <span class=nx>kinegram</span><span class=p>.</span><span class=nx>width</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>kinegram</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>,</span> <span class=nx>keyframes</span><span class=p>[</span><span class=nx>index</span><span class=p>].</span><span class=nx>get</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=nx>index</span> <span class=o>&gt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>overlay</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>,</span> <span class=nx>color</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>255</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>overlay</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>,</span> <span class=nx>color</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div><p>La lógica es que se toma una columna de cada fotograma y sus pixeles se cargan en la nueva imagen
+(el kinegrama): esto se hace de manera iterativa, por ello se utiliza la función módulo respecto
+a la longitud del arreglo <strong>keyframes</strong>. Para la máscara, cada vez que este módulo sea igual a cero
+(cuando termina una &ldquo;iteración&rdquo;) se pinta de color negro y, en caso contrario, se deja transparente.
+La fracción respecto a <em>x</em> en el cálculo del índice fue un valor obtenido mediante ensayo y error
+que permitiese ver una animación fluida. Esta misma razón se tiene en cuenta al animar la máscara
+mediante el código <code>image(overlay, (frameCount * 4) % width, height / 2)</code>, pues dividir entre <em>0.25</em>
+es equivalente a multiplicar por 4.</p><p>Por último, se destacan las funciones para cargar <em>gifs</em> desde la máquina local:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>handleFile</span><span class=p>(</span><span class=nx>file</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gifLoading</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gif</span> <span class=o>=</span> <span class=nx>createImg</span><span class=p>(</span><span class=nx>file</span><span class=p>.</span><span class=nx>data</span><span class=p>,</span> <span class=s2>&#34;&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gif</span><span class=p>.</span><span class=nx>hide</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>gifSrc</span> <span class=o>=</span> <span class=nx>gif</span><span class=p>.</span><span class=nx>attribute</span><span class=p>(</span><span class=s2>&#34;src&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gif</span> <span class=o>=</span> <span class=nx>loadImage</span><span class=p>(</span><span class=nx>gifSrc</span><span class=p>,</span> <span class=nx>gifLoaded</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>gifLoaded</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>gifLoading</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>uploaded</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>setup</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div><p>Como se observa, cada vez que se carga un archivo, la bandera <strong>gifLoading</strong> se deja como verdadera,
+y se vuelve a poner como falsa en la función <strong>gifLoaded</strong>, es decir, cuando ya ha finalizado la carga.
+Se crea una nueva imagen en la variable <strong>gif</strong> (que luego debe ocultarse para evitar que aparezca bajo
+el canvas) y se carga la ruta del archivo con <strong>loadImage</strong>, cuyo <em>callback</em> es la función que indica
+que ya se cargó el archivo: dentro de esta última vuelve a llamarse el <strong>setup</strong>, pero se marca la bandera
+<strong>uploaded</strong> como verdadera para que se refresquen únicamente las imágenes (pero no los sliders, por ejemplo).</p><div id=conclusiones-y-trabajo-futuro class=anchor>Conclusiones y Trabajo futuro></div><h2 class="relative group">Conclusiones y Trabajo futuro
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#conclusiones-y-trabajo-futuro aria-label=Anchor>#</a></span></h2><ul><li>Una particularidad muy interesante de los patrones de moiré que se observó en la segunda implementación son las
+deformaciones que se generan cuando el plano está en tres dimensiones: mientras que la superposición de patrones de
+líneas rectas en dos dimensiones genera efectos visuales rectilíneos, en este ejercicio la superposición de líneas
+rectas desemboca en la visualización de líneas curvas, dado que cada patrón gira sobre un eje distinto: <code>x</code>,<code>y</code> o <code>z</code>.
+Adicionalmente, estas líneas curvas se aprecian en tonalidades de amarillo, magenta y cian, puesto que las líneas
+rectas se trazaron en rojo, verde y azul (RGB).</li><li>Mientras que elaborar un kinegrama manualmente puede ser una tarea compleja y que requiere conocimientos técnicos
+en programas de edición de imágenes, en <strong>p5js</strong> resulta convertirse en una tarea sencilla gracias a las múltiples
+funcionalidades que este lenguaje posee. Además, la propuesta realizada de convertir un <em>gif</em> a kinegrama permite
+comprender aún mejor su funcionamiento, dado que se ve la transición de animación a imagen estática y máscara, que
+vuelven a dar como resultado la misma animación cuando la máscara se pone en movimiento.</li><li>No obstante, esta implementación también cuenta con algunos puntos negativos: por un lado, requiere ser muy precisa,
+porque calquier variación en el cálculo del índice podría estropear la armonía visual de la animación resultante
+(haciendo que no luzca ni remotamente parecido al <em>gif</em> original); por otra parte, consume muchos recursos tanto
+de tiempo, pues se aprecia que la página carga un poco más lento de lo usual, como de memoria, lo cual es
+evidente considerando toda la cantidad de imágenes y archivos que se están manipulando.</li><li>Como trabajo futuro, se podría aplicar la implementación de patrones de moiré en tres dimensiones para construir,
+de manera análoga, kinegramas en tres dimensiones: esto podría conllevar un estudio a profunidad de cómo generar
+la máscara visual y, así mismo, de cómo debería ser su rotación para ofrecer una animación visualmente armoniosa.</li></ul><div id=referencias class=anchor>Referencias></div><h2 class="relative group">Referencias
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#referencias aria-label=Anchor>#</a></span></h2><div id=1-b-g-breitmeyer-visual-masking-an-integrative-approach-oxford-university-press-oxford-1984 class=anchor><em>[1]</em> B. G. Breitmeyer, “Visual Masking: An Integrative Approach,” Oxford University Press, Oxford, 1984.></div><h4 class="relative group"><em>[1]</em> B. G. Breitmeyer, “Visual Masking: An Integrative Approach,” Oxford University Press, Oxford, 1984.
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#1-b-g-breitmeyer-visual-masking-an-integrative-approach-oxford-university-press-oxford-1984 aria-label=Anchor>#</a></span></h4><div id=2-l-spillmann-the-perception-of-movement-and-depth-in-moiré-patterns-perception-vol-22-no-3-pp-287-308-1993-doi-101068p220287 class=anchor><em>[2]</em> L. Spillmann, &ldquo;The Perception of Movement and Depth in Moiré Patterns,&rdquo; Perception, vol. 22, no. 3, pp. 287-308, 1993, doi: 10.1068/p220287.></div><h4 class="relative group"><em>[2]</em> L. Spillmann, &ldquo;The Perception of Movement and Depth in Moiré Patterns,&rdquo; Perception, vol. 22, no. 3, pp. 287-308, 1993, doi: 10.1068/p220287.
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#2-l-spillmann-the-perception-of-movement-and-depth-in-moir%c3%a9-patterns-perception-vol-22-no-3-pp-287-308-1993-doi-101068p220287 aria-label=Anchor>#</a></span></h4><div id=3-r-l-van-renesse-a-review-of-holograms-and-other-microstructures-as-security-features-springer-series-in-optical-sciences-vol-78-2007-httpswwwdslreportscomr0download234675141cd69e70ba7cfa509b37dddbba63faavanrenessepdf class=anchor><em>[3]</em> R. L. Van Renesse, &ldquo;A review of holograms and other microstructures as security features,&rdquo; Springer Series in Optical Sciences, vol. 78, 2007. <a href=https://www.dslreports.com/r0/download/2346751~41cd69e70ba7cfa509b37dddbba63faa/vanrenesse.pdf target=_blank>https://www.dslreports.com/r0/download/2346751~41cd69e70ba7cfa509b37dddbba63faa/vanrenesse.pdf</a>></div><h4 class="relative group"><em>[3]</em> R. L. Van Renesse, &ldquo;A review of holograms and other microstructures as security features,&rdquo; Springer Series in Optical Sciences, vol. 78, 2007. <a href=https://www.dslreports.com/r0/download/2346751~41cd69e70ba7cfa509b37dddbba63faa/vanrenesse.pdf target=_blank>https://www.dslreports.com/r0/download/2346751~41cd69e70ba7cfa509b37dddbba63faa/vanrenesse.pdf</a>
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#3-r-l-van-renesse-a-review-of-holograms-and-other-microstructures-as-security-features-springer-series-in-optical-sciences-vol-78-2007-httpswwwdslreportscomr0download234675141cd69e70ba7cfa509b37dddbba63faavanrenessepdf aria-label=Anchor>#</a></span></h4><div id=4-o-georgiou-and-m-georgiou-zebra--computing-moire-animations-sustainable-computational-workflows-pp-49-56-2018-httppaperscumincadorgdataworksattecaaderis2018_120pdf class=anchor><em>[4]</em> O. Georgiou and M. Georgiou, &ldquo;ZEBRA | COMPUTING MOIRE ANIMATIONS,&rdquo; Sustainable Computational Workflows, pp. 49-56, 2018. <a href=http://papers.cumincad.org/data/works/att/ecaaderis2018_120.pdf target=_blank>http://papers.cumincad.org/data/works/att/ecaaderis2018_120.pdf</a>></div><h4 class="relative group"><em>[4]</em> O. Georgiou and M. Georgiou, &ldquo;ZEBRA | COMPUTING MOIRE ANIMATIONS,&rdquo; Sustainable Computational Workflows, pp. 49-56, 2018. <a href=http://papers.cumincad.org/data/works/att/ecaaderis2018_120.pdf target=_blank>http://papers.cumincad.org/data/works/att/ecaaderis2018_120.pdf</a>
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#4-o-georgiou-and-m-georgiou-zebra--computing-moire-animations-sustainable-computational-workflows-pp-49-56-2018-httppaperscumincadorgdataworksattecaaderis2018_120pdf aria-label=Anchor>#</a></span></h4></div></br></br></div><script>var oid="views_first/masking1.md",oid_likes="likes_first/masking1.md"</script><script type=text/javascript src=/showcase/js/page.min.0e49973b4ad0a382c7c6012d8bff8226316642daabc4f8a20477bd08674f3da6e2fa993bc20ad4f51e7c5bb68e6f913a207a7c4fe37ea0e7b806894afce0a64e.js integrity="sha512-DkmXO0rQo4LHxgEti/+CJjFmQtqrxPiiBHe9CGdPPabi+pk7wgrU9R58W7aOb5E6IHp8T+N+oOe4BolK/OCmTg=="></script></section><footer class="pt-8 max-w-prose print:hidden"><div class=flex><div class=place-self-center><div class="text-2xl sm:text-lg"><div class="flex flex-wrap text-neutral-400 dark:text-neutral-500"><a class="px-1 hover:text-primary-700 dark:hover:text-primary-400" href=https://github.com/VisualComputing20231/showcase target=_blank aria-label=Github rel="me noopener noreferrer"><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentcolor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6.0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6.0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3.0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1.0-6.2-.3-40.4-.3-61.4.0.0-70 15-84.7-29.8.0.0-11.4-29.1-27.8-36.6.0.0-22.9-15.7 1.6-15.4.0.0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5.0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9.0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4.0 33.7-.3 75.4-.3 83.6.0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6.0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9.0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span></span></a></div></div></div></div><div class=pt-8><hr class="border-dotted border-neutral-300 dark:border-neutral-600"><div class="flex justify-between pt-3"><span><a class="flex group mr-3" href=/showcase/first/masking2/><span class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400">&larr;</span>
+<span class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400">&rarr;</span>
+<span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"></span>
+<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"></span></span></a></span><span><a class="flex text-right group ml-3" href=/showcase/first/keyframes/><span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"></span>
+<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"></span></span><span class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400">&rarr;</span>
+<span class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400">&larr;</span></a></span></div></div></footer></article><div class="pointer-events-none absolute top-[100vh] bottom-0 w-12 ltr:right-0 rtl:left-0"><a href=#the-top class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400" aria-label="Scroll to top" title="Scroll to top">&uarr;</a></div></main><footer class="py-10 print:hidden"><div class="flex items-center justify-between"><p class="text-sm text-neutral-500 dark:text-neutral-400">&copy;
+2023</p><p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://gohugo.io/ target=_blank rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://blowfish.page/ target=_blank rel="noopener noreferrer">Blowfish</a></p></div><script>mediumZoom(document.querySelectorAll("img:not(.nozoom)"),{margin:24,background:"rgba(0,0,0,0.5)",scrollOffset:0})</script><script type=text/javascript src=/showcase/js/process.min.2166d3adac1679c00a75161830ab5725d3efc0e3d3f8c2453fb01d0907948436c25f0f8a7ad824322fa22f3f9c85fd4d0a1d5c856f53b862157da25a57dc3d52.js integrity="sha512-IWbTrawWecAKdRYYMKtXJdPvwOPT+MJFP7AdCQeUhDbCXw+KetgkMi+iLz+chf1NCh1chW9TuGIVfaJaV9w9Ug=="></script></footer></div></body></html>

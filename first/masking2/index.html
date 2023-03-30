@@ -1,0 +1,544 @@
+<!doctype html><html lang=en dir=ltr class=scroll-smooth data-default-appearance=dark data-auto-appearance=true><head><meta charset=utf-8><meta http-equiv=content-language content="en"><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><title>&#183; Computación Visual</title><meta name=title content=" &#183; Computación Visual"><link rel=canonical href=https://visualcomputing20231.github.io/showcase/first/masking2/><link type=text/css rel=stylesheet href=/showcase/css/main.bundle.min.5cab8e19b11e31042bf6b52fb5183ca3bd18ff7ed0c63673c44c77657c766451b8a2329daa0e2ccbd673e37500a4e873e8c0aa1d5249e04e7b0c0e6ad14ad814.css integrity="sha512-XKuOGbEeMQQr9rUvtRg8o70Y/37QxjZzxEx3ZXx2ZFG4ojKdqg4sy9Zz43UApOhz6MCqHVJJ4E57DA5q0UrYFA=="><script type=text/javascript src=/showcase/js/appearance.min.a75d508cf75a202afc48fe649516720f8036bda3657897f6cc07dab21f94fa9c3933edbbfc2936f8d3a426f45ac6153237a48aec9115147c5e03db1c5b62b8bc.js integrity="sha512-p11QjPdaICr8SP5klRZyD4A2vaNleJf2zAfash+U+pw5M+27/Ck2+NOkJvRaxhUyN6SK7JEVFHxeA9scW2K4vA=="></script>
+<script src=/js/zoom.min.js></script>
+<link rel=apple-touch-icon sizes=180x180 href=/showcase/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/showcase/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/showcase/favicon-16x16.png><link rel=manifest href=/showcase/site.webmanifest><meta property="og:title" content><meta property="og:description" content="Visual Masking II> Visual Masking II # Introducción> Introducción # En esta sección se continúa con el enmascaramiento visual, pero esta vez el foco está en las máscaras de convolución (kernels de imágenes), así como en otras cualidades del procesamiento digital de imágenes: los histogramas y la luminosidad."><meta property="og:type" content="article"><meta property="og:url" content="https://visualcomputing20231.github.io/showcase/first/masking2/"><meta property="article:section" content="first"><meta property="og:site_name" content="Computación Visual"><meta name=twitter:card content="summary"><meta name=twitter:title content><meta name=twitter:description content="Visual Masking II> Visual Masking II # Introducción> Introducción # En esta sección se continúa con el enmascaramiento visual, pero esta vez el foco está en las máscaras de convolución (kernels de imágenes), así como en otras cualidades del procesamiento digital de imágenes: los histogramas y la luminosidad."><script type=application/ld+json>[{"@context":"https://schema.org","@type":"Article","articleSection":"Firsts","name":"","headline":"","abstract":"Visual Masking II\u003e Visual Masking II # Introducción\u003e Introducción # En esta sección se continúa con el enmascaramiento visual, pero esta vez el foco está en las máscaras de convolución (kernels de imágenes), así como en otras cualidades del procesamiento digital de imágenes: los histogramas y la luminosidad.","inLanguage":"en","url":"https:\/\/visualcomputing20231.github.io\/showcase\/first\/masking2\/","author":{"@type":"Person","name":""},"mainEntityOfPage":"true","wordCount":"2622"}]</script><link href=https://github.com/VisualComputing20231/showcase rel=me><script src=/showcase/lib/jquery/jquery.slim.min.js integrity></script>
+<link type=text/css rel=stylesheet href=/showcase/lib/katex/katex.min.990c289bc36ce28a7e1f6f680e40ff2d73bf3ac5cfbc215f92066414056b86178fcd12d4f0d508dcd926e373615944a68f7a7909c6b61d3124310997411c0341.css integrity="sha512-mQwom8Ns4op+H29oDkD/LXO/OsXPvCFfkgZkFAVrhhePzRLU8NUI3Nkm43NhWUSmj3p5Cca2HTEkMQmXQRwDQQ=="><script defer src=/showcase/lib/katex/katex.min.b0748d2c40912522be045b3b13c0e215cea97fa9fdd1b2c8f391268b0d6386b79db9984add55e0abd978900b7d79320760072e4012872f4d502ace3fdd7825f2.js integrity="sha512-sHSNLECRJSK+BFs7E8DiFc6pf6n90bLI85Emiw1jhreduZhK3VXgq9l4kAt9eTIHYAcuQBKHL01QKs4/3Xgl8g=="></script>
+<script defer src=/showcase/lib/katex/auto-render.min.8968ae052e67b7aafad1f0b3dba35dd19a9ed276e4d594c841b9772afee462c5fec8a314147ce3687dbe02733abe9d97b3e80d99a0405562634a6b8fc3be847e.js integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" onload=renderMathInElement(document.body)></script><meta name=theme-color></head><body class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"><div id=the-top class="absolute flex self-center"><a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600" href=#main-content><span class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a></div><div class=min-h-[148px]></div><div class="fixed inset-x-0 pl-[24px] pr-[24px]" style=z-index:100><div id=menu-blur class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom bg-neutral dark:bg-neutral-800"></div><div class="relative max-w-[64rem] ml-auto mr-auto"><div style=padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3"><div><a href=/showcase/ class=flex><span class=sr-only>Computación Visual</span>
+<img src=/showcase/img/logo_unal.webp width=490 height=490 class="max-h-[5rem] max-w-[5rem] object-scale-down object-left nozoom" alt="Computación Visual"></a></div><div class="flex flex-1 items-center justify-between"><nav class="flex space-x-3"><a href=/showcase/ class="text-base font-medium text-gray-500 hover:text-gray-900">Computación Visual</a></nav><nav class="hidden md:flex items-center space-x-5 md:ml-12"><div><div class="cursor-pointer flex items-center nested-menu"><a class="text-base font-medium text-gray-500 hover:text-gray-900" title>Equipo</a>
+<span><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75.0 011.06.02L10 11.168l3.71-3.938a.75.75.0 111.08 1.04l-4.25 4.5a.75.75.0 01-1.08.0l-4.25-4.5a.75.75.0 01.02-1.06z" clip-rule="evenodd"/></svg></span></span></div><div class="absolute menuhide"><div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl"><div class="flex flex-col space-y-3"><a href=/showcase/team/jpbm/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Juan Pablo Bustamante Moreno</p></a><a href=/showcase/team/nrn/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Nicolás Romero Niño</p></a><a href=/showcase/team/jjpb/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Juan José Peña Becerra</p></a></div></div></div></div><div><div class="cursor-pointer flex items-center nested-menu"><a class="text-base font-medium text-gray-500 hover:text-gray-900" title>Primera Entrega</a>
+<span><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75.0 011.06.02L10 11.168l3.71-3.938a.75.75.0 111.08 1.04l-4.25 4.5a.75.75.0 01-1.08.0l-4.25-4.5a.75.75.0 01.02-1.06z" clip-rule="evenodd"/></svg></span></span></div><div class="absolute menuhide"><div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl"><div class="flex flex-col space-y-3"><a href=/showcase/first/illusions/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Visual Illusions</p></a><a href=/showcase/first/coloring/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Coloring</p></a><a href=/showcase/first/terrain/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Mach Bands</p></a><a href=/showcase/first/masking1/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Masking I: Moiré Patterns & Kinegrams</p></a><a href=/showcase/first/masking2/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Masking II: Convolution Masks</p></a><a href=/showcase/first/pixelator/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Spatial Coherence</p></a><a href=/showcase/first/keyframes/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Temporal Coherence</p></a><a href=/showcase/first/depth/ class="flex items-center"><p class="text-sm font-sm text-gray-500 hover:text-gray-900" title>Depth Perception</p></a></div></div></div></div></nav><div class="flex md:hidden items-center space-x-5 md:ml-12"><span></span></div></div><div class="-my-2 -mr-2 md:hidden"><label id=menu-button for=menu-controller class=block><input type=checkbox id=menu-controller class=hidden><div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentcolor" d="M0 96C0 78.33 14.33 64 32 64H416c17.7.0 32 14.33 32 32 0 17.7-14.3 32-32 32H32C14.33 128 0 113.7.0 96zM0 256c0-17.7 14.33-32 32-32H416c17.7.0 32 14.3 32 32s-14.3 32-32 32H32c-17.67.0-32-14.3-32-32zM416 448H32c-17.67.0-32-14.3-32-32s14.33-32 32-32H416c17.7.0 32 14.3 32 32s-14.3 32-32 32z"/></svg></span></div><div id=menu-wrapper style=padding-top:5px class="fixed inset-0 z-30 invisible w-screen h-screen m-auto overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50"><ul class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl"><li><span class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentcolor" d="M310.6 361.4c12.5 12.5 12.5 32.75.0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3 54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75.0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75.0-45.25s32.75-12.5 45.25.0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25.0s12.5 32.75.0 45.25l-105.4 105.4L310.6 361.4z"/></svg></span></span></li><li class=mt-1><a class="flex items-center"><p class="text-bg font-bg text-gray-500 hover:text-gray-900" title>Equipo</p><span><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75.0 011.06.02L10 11.168l3.71-3.938a.75.75.0 111.08 1.04l-4.25 4.5a.75.75.0 01-1.08.0l-4.25-4.5a.75.75.0 01.02-1.06z" clip-rule="evenodd"/></svg></span></span></a></li><li class=mt-1><a href=/showcase/team/jpbm/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Juan Pablo Bustamante Moreno</p></a></li><li class=mt-1><a href=/showcase/team/nrn/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Nicolás Romero Niño</p></a></li><li class=mt-1><a href=/showcase/team/jjpb/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Juan José Peña Becerra</p></a></li><li class=mb-2></li><li class=mt-1><a class="flex items-center"><p class="text-bg font-bg text-gray-500 hover:text-gray-900" title>Primera Entrega</p><span><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75.0 011.06.02L10 11.168l3.71-3.938a.75.75.0 111.08 1.04l-4.25 4.5a.75.75.0 01-1.08.0l-4.25-4.5a.75.75.0 01.02-1.06z" clip-rule="evenodd"/></svg></span></span></a></li><li class=mt-1><a href=/showcase/first/illusions/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Visual Illusions</p></a></li><li class=mt-1><a href=/showcase/first/coloring/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Coloring</p></a></li><li class=mt-1><a href=/showcase/first/terrain/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Mach Bands</p></a></li><li class=mt-1><a href=/showcase/first/masking1/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Masking I: Moiré Patterns & Kinegrams</p></a></li><li class=mt-1><a href=/showcase/first/masking2/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Masking II: Convolution Masks</p></a></li><li class=mt-1><a href=/showcase/first/pixelator/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Spatial Coherence</p></a></li><li class=mt-1><a href=/showcase/first/keyframes/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Temporal Coherence</p></a></li><li class=mt-1><a href=/showcase/first/depth/ class="flex items-center"><p class="text-sm font-small text-gray-500 hover:text-gray-900" title>Depth Perception</p></a></li><li class=mb-2></li></ul></div></label></div></div></div></div><script>window.addEventListener("scroll",function(){var t=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0,n=document.getElementById("menu-blur");n.style.opacity=t/300})</script><div class="relative flex flex-col grow"><main id=main-content class=grow><article><header id=single_header class="mt-5 max-w-prose"><h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral"></h1><div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden"><div class="flex flex-row flex-wrap items-center"><span>2622 words</span><span class="px-2 text-primary-500">&#183;</span><span title="Reading time">13 mins</span><span class="px-2 text-primary-500">&#183;</span><span>
+<span id=views_first/masking2.md title=views>0</span>
+<span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentcolor" d="M288 32c-80.8.0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7.0 24.6C17.3 304 48.6 356 95.4 399.4 142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1 3.3-7.9 3.3-16.7.0-24.6-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144 64.5-144 144-144 144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64-11.5.0-22.3-3-31.6-8.4-.2 2.8-.4 5.5-.4 8.4.0 53 43 96 96 96s96-43 96-96-43-96-96-96c-2.8.0-5.6.1-8.4.4 5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></span></span><span class="px-2 text-primary-500">&#183;</span><span>
+<span id=likes_first/masking2.md title=likes>0</span>
+<span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M47.6 300.4 228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6.0 115.2.0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></span></span></span><span class="px-2 text-primary-500">&#183;</span><span>
+<button id=likes_button class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400" onclick=process_article()>
+<span id=likes_button_heart style=display:none class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M47.6 300.4 228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6.0 115.2.0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></span></span><span id=likes_button_emtpty_heart class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M244 84l11.1 12 12-11.98C300.6 51.37 347 36.51 392.6 44.1 461.5 55.58 512 115.2 512 185.1V190.9c0 41.5-17.2 81.2-47.6 109.5L283.7 469.1c-7.5 7-17.4 10.9-27.7 10.9S235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1.0 232.4.0 190.9V185.1c0-69.9 50.52-129.52 119.4-141 44.7-7.59 92 7.27 124.6 39.9C243.1 84 244 84.01 244 84zm11.1 79.9-45-46.8c-21.7-20.82-52.5-30.7-82.8-25.66C81.55 99.07 48 138.7 48 185.1V190.9c0 28.2 11.71 55.2 32.34 74.4L256 429.3l175.7-164c20.6-19.2 32.3-46.2 32.3-74.4V185.1c0-46.4-33.6-86.03-79.3-93.66C354.4 86.4 323.6 96.28 301.9 117.1l-46.8 46.8z"/></svg></span></span><span id=likes_button_text>&nbsp;Like</span></button></span></div></div></header><section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row"><div class="min-w-0 min-h-0 max-w-prose"><div id=visual-masking-ii class=anchor>Visual Masking II></div><h1 class="relative group">Visual Masking II
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#visual-masking-ii aria-label=Anchor>#</a></span></h1><div style=text-align:justify;text-justify:inter-word><div id=introducción class=anchor>Introducción></div><h2 class="relative group">Introducción
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#introducci%c3%b3n aria-label=Anchor>#</a></span></h2><p>En esta sección se continúa con el enmascaramiento visual, pero esta vez el foco está en
+las máscaras de convolución (<em>kernels</em> de imágenes), así como en otras cualidades del
+procesamiento digital de imágenes: los histogramas y la luminosidad.</p><p>Acto seguido, se desarrolla una aplicación de procesamiento de imágenes que abarca algunos
+de los kernels más comunes: <em>identity, edge detection, sharpen, emboss, gaussian blur, unsharp
+masking</em>. Dentro del mismo programa se lleva a cabo la generación de un histograma con los
+valores de luminosidad del modo de color <em>HSL</em>: dicha luminosidad también es mutable en la
+imagen resultante de la convolución, alterando el histograma trazado en el proceso.</p><p>Para terminar, se discuten posibles aplicaciones de los conceptos aprendidos, así
+como el trabajo futuro que se puede desarrollar mediante <em>visual masking</em> en general.</p><div id=marco-teórico class=anchor>Marco Teórico></div><h2 class="relative group">Marco Teórico
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#marco-te%c3%b3rico aria-label=Anchor>#</a></span></h2><p>En la sección anterior se definía el enmascaramiento visual; por consiguiente, se pasa
+directamente a la conceptualización propia de esta sección.</p><ul><li><strong>Máscaras de convolución:</strong></li></ul><p>Para entender el concepto, en primer lugar es importante comprender qué es una convolución. De acuerdo
+con <em>[1]</em>, esta se puede describir, intuitivamente, como una función que es la integral o suma de dos
+funciones componentes y que mide la cantidad de superposición a medida que una se desplaza sobre la
+otra. Formalmente, una convolución está definida de la siguiente manera <em>[2]</em>:</p><link rel=stylesheet href=/showcase/katex/katex.min.css><script defer src=/showcase/katex/katex.min.js></script>
+<script defer src=/showcase/katex/auto-render.min.js onload=renderMathInElement(document.body)></script><span>
+\[ g(x,y) = \omega * f(x,y) = \sum_{dx=-a}^{a}\sum_{dy=-b}^{b} \omega(dx,dy) f(x-dx,y-dy) \]</span><p>Ahora, una máscara de convolución es una matriz o kernel numérico utilizado en procesamiento de imágenes
+y visión por computadora para realizar operaciones de convolución en una imagen. Estas matrices, típicamente
+son de tamaño <em>3 <strong>x</strong> 3</em>, aunque también se pueden emplear matrices de tamaño <em>2 <strong>x</strong> 2</em> y <em>5 <strong>x</strong> 5</em>,
+entre otras. En líneas generales, en procedimiento consiste en que, a partir de una imagen, se van tomando
+bloques que posean el mismo tamaño de la matriz. Luego, aplicando la operación descrita (convolución) en
+función de los valores de los píxeles originales y los coeficientes de la máscara, se calcula el valor de
+cada píxel de la imagen resultante <em>[1]</em>. Esta tendrá ciertas características dependiendo del kernel que
+haya sido aplicado. Algunos de los más comunes (y los cuales fueron implementados en este ejercicio) se
+listan a continuación <em>[2]</em> y <em>[3]</em>:</p><ol><li><strong>Identity:</strong></li></ol><span>\[ \begin{bmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \\ \end{bmatrix} \]</span><ol start=2><li><strong>Edge detection:</strong></li></ol><span>\[ \begin{bmatrix} -1 & -1 & -1 \\ -1 & 8 & -1 \\ -1 & -1 & -1 \\ \end{bmatrix} \]</span><ol start=3><li><strong>Sharpen:</strong></li></ol><span>\[ \begin{bmatrix} 0 & -1 & 0 \\ -1 & 5 & -1 \\ 0 & -1 & 0 \\ \end{bmatrix} \]</span><ol start=4><li><strong>Emboss:</strong></li></ol><span>\[ \begin{bmatrix} -2 & -1 & 0 \\ -1 & 1 & 1 \\ 0 & 1 & 2 \\ \end{bmatrix} \]</span><ol start=5><li><strong>Gaussian Blur (5x5):</strong></li></ol><span>\[ \frac{1}{256} \begin{bmatrix} 1 & 4 & 6 & 4 & 1 \\ 4 & 16 & 24 & 16 & 4 \\ 6 & 24 & 36 & 24 & 6 \\ 4 & 16 & 24 & 16 & 4 \\ 1 & 4 & 6 & 4 & 1 \\ \end{bmatrix} \]</span><ol start=6><li><strong>Unsharp Masking (5x5):</strong></li></ol><span>\[ \frac{-1}{256} \begin{bmatrix} 1 & 4 & 6 & 4 & 1 \\ 4 & 16 & 24 & 16 & 4 \\ 6 & 24 & -476 & 24 & 6 \\ 4 & 16 & 24 & 16 & 4 \\ 1 & 4 & 6 & 4 & 1 \\ \end{bmatrix} \]</span><ul><li><strong>Luminosidad e histograma de imagen:</strong></li></ul><p>En este ámbito, un histograma es una representación gráfica de la distribución de los valores de los
+píxeles en una imagen: el eje <em>x</em> representa los valores de intensidad de los píxeles, mientras que
+el eje <em>y</em> representa la cantidad de píxeles en la imagen que tienen cada valor de intensidad <em>[4]</em>.</p><p>La intensidad es un valor presente en el modelo de color <strong>HSI</strong>, también conocido como <strong>HSL</strong>: sus siglas
+se refieren a <em>Hue</em> (matiz), que corresponde al tono que distingue a un color de otro; <em>Saturation</em> (saturación),
+que se relaciona con la pureza del color, es decir, la cantidad de gris en relación con el matiz; y <em>Lightness</em>
+(luminosidad), que es la cantidad de luz blanca que se mezcla con un color, dando una medida de la claridad u
+oscuridad del mismo con valores que van desde 0 (negro) hasta 100 (blanco) <em>[4]</em>.</p><div id=código-y-resultados class=anchor>Código y Resultados:></div><h2 class="relative group">Código y Resultados:
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#c%c3%b3digo-y-resultados aria-label=Anchor>#</a></span></h2><details><summary><strong>Código completo</strong></summary><div class=markdown-inner><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>let</span> <span class=nx>file</span><span class=p>;</span> <span class=kd>let</span> <span class=nx>newFile</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>maskedFile</span><span class=p>;</span> <span class=kd>let</span> <span class=nx>lightFile</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>histogram</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>fileLoading</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>uploaded</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>preload</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>file</span> <span class=o>=</span> <span class=nx>loadImage</span><span class=p>(</span><span class=s2>&#34;../assets/shrek.png&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>setup</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>createCanvas</span><span class=p>(</span><span class=mi>600</span><span class=p>,</span> <span class=mi>1000</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>colorMode</span><span class=p>(</span><span class=nx>RGB</span><span class=p>,</span> <span class=mi>255</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>textSize</span><span class=p>(</span><span class=mi>20</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>textAlign</span><span class=p>(</span><span class=nx>CENTER</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>textStyle</span><span class=p>(</span><span class=nx>BOLD</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=nx>file</span><span class=p>.</span><span class=nx>resize</span><span class=p>(</span><span class=mi>250</span><span class=p>,</span><span class=mi>250</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>maskedFile</span> <span class=o>=</span> <span class=nx>createImage</span><span class=p>(</span><span class=nx>file</span><span class=p>.</span><span class=nx>width</span><span class=p>,</span> <span class=nx>file</span><span class=p>.</span><span class=nx>height</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>lightFile</span> <span class=o>=</span> <span class=nx>createImage</span><span class=p>(</span><span class=nx>file</span><span class=p>.</span><span class=nx>width</span><span class=p>,</span> <span class=nx>file</span><span class=p>.</span><span class=nx>height</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=nx>uploaded</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>newFile</span> <span class=o>=</span> <span class=nx>createFileInput</span><span class=p>(</span><span class=nx>handleFile</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>newFile</span><span class=p>.</span><span class=nx>position</span><span class=p>(</span><span class=nx>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>65</span><span class=p>,</span> <span class=mi>25</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=nx>slider</span> <span class=o>=</span> <span class=nx>createSlider</span><span class=p>(</span><span class=o>-</span><span class=mi>100</span><span class=p>,</span> <span class=mi>100</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>slider</span><span class=p>.</span><span class=nx>position</span><span class=p>(</span><span class=mi>325</span><span class=p>,</span> <span class=mi>380</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>slider</span><span class=p>.</span><span class=nx>style</span><span class=p>(</span><span class=s1>&#39;width&#39;</span><span class=p>,</span> <span class=s1>&#39;250px&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=nx>menu</span> <span class=o>=</span> <span class=nx>createSelect</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nx>menu</span><span class=p>.</span><span class=nx>position</span><span class=p>(</span><span class=mi>25</span><span class=p>,</span> <span class=mi>380</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>menu</span><span class=p>.</span><span class=nx>style</span><span class=p>(</span><span class=s1>&#39;width&#39;</span><span class=p>,</span> <span class=s1>&#39;250px&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>menu</span><span class=p>.</span><span class=nx>option</span><span class=p>(</span><span class=s2>&#34;Identity&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>menu</span><span class=p>.</span><span class=nx>option</span><span class=p>(</span><span class=s2>&#34;Edge Detection&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>menu</span><span class=p>.</span><span class=nx>option</span><span class=p>(</span><span class=s2>&#34;Sharpen&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>menu</span><span class=p>.</span><span class=nx>option</span><span class=p>(</span><span class=s2>&#34;Emboss&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>menu</span><span class=p>.</span><span class=nx>option</span><span class=p>(</span><span class=s2>&#34;Gaussian Blur 5x5&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>menu</span><span class=p>.</span><span class=nx>option</span><span class=p>(</span><span class=s2>&#34;Unsharp Masking 5x5&#34;</span><span class=p>);</span> 
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=nx>resetHistogram</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=nx>file</span><span class=p>.</span><span class=nx>loadPixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>loadPixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>j</span> <span class=o>&lt;</span> <span class=nx>file</span><span class=p>.</span><span class=nx>width</span><span class=p>;</span> <span class=nx>j</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>          <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>k</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>k</span> <span class=o>&lt;</span> <span class=nx>file</span><span class=p>.</span><span class=nx>height</span><span class=p>;</span> <span class=nx>k</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=kd>let</span> <span class=nx>pixel</span> <span class=o>=</span> <span class=nx>file</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>j</span><span class=p>,</span> <span class=nx>k</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>j</span><span class=p>,</span> <span class=nx>k</span><span class=p>,</span> <span class=nx>pixel</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=nx>lightFile</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>j</span><span class=p>,</span> <span class=nx>k</span><span class=p>,</span> <span class=nx>pixel</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=nx>histogram</span><span class=p>[</span><span class=kr>int</span><span class=p>(</span><span class=nx>lightness</span><span class=p>(</span><span class=nx>pixel</span><span class=p>))]</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>          <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=nx>scaleHistogram</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>updatePixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nx>lightFile</span><span class=p>.</span><span class=nx>updatePixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>masking</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>slider</span><span class=p>.</span><span class=nx>input</span><span class=p>(</span><span class=nx>changeLightness</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>menu</span><span class=p>.</span><span class=nx>input</span><span class=p>(</span><span class=nx>masking</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>draw</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>background</span><span class=p>(</span><span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=nx>noStroke</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fill</span><span class=p>(</span><span class=s2>&#34;white&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>text</span><span class=p>(</span><span class=s2>&#34;Lightness:&#34;</span><span class=p>,</span> <span class=mi>3</span><span class=o>*</span><span class=nx>width</span><span class=o>/</span><span class=mi>4</span><span class=p>,</span> <span class=mi>360</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>text</span><span class=p>(</span><span class=s2>&#34;Kernel:&#34;</span><span class=p>,</span> <span class=nx>width</span><span class=o>/</span><span class=mi>4</span><span class=p>,</span> <span class=mi>360</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>rect</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>420</span><span class=p>,</span> <span class=nx>width</span><span class=p>,</span> <span class=nx>height</span><span class=o>-</span><span class=mi>420</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fill</span><span class=p>(</span><span class=s2>&#34;black&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>text</span><span class=p>(</span><span class=s2>&#34;Histograma de la imagen resultante:&#34;</span><span class=p>,</span> <span class=nx>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=mi>450</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=nx>fileLoading</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>image</span><span class=p>(</span><span class=nx>file</span><span class=p>,</span> <span class=mi>25</span><span class=p>,</span> <span class=mi>70</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>image</span><span class=p>(</span><span class=nx>lightFile</span><span class=p>,</span> <span class=mi>325</span><span class=p>,</span> <span class=mi>70</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>stroke</span><span class=p>(</span><span class=s2>&#34;purple&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>w</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>w</span> <span class=o>&lt;=</span> <span class=mi>100</span><span class=p>;</span> <span class=nx>w</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=kd>let</span> <span class=nx>ab</span> <span class=o>=</span> <span class=kr>int</span><span class=p>(</span><span class=nx>map</span><span class=p>(</span><span class=nx>w</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>100</span><span class=p>,</span> <span class=mi>25</span><span class=p>,</span> <span class=nx>width</span> <span class=o>-</span> <span class=mi>25</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>            <span class=nx>line</span><span class=p>(</span><span class=nx>ab</span><span class=p>,</span> <span class=nx>height</span> <span class=o>-</span> <span class=nx>histogram</span><span class=p>[</span><span class=nx>w</span><span class=p>]</span> <span class=o>-</span> <span class=mi>30</span><span class=p>,</span> <span class=nx>ab</span><span class=p>,</span> <span class=nx>height</span> <span class=o>-</span> <span class=mi>30</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>changeLightness</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>resetHistogram</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>z</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>z</span> <span class=o>&lt;</span> <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>width</span><span class=p>;</span> <span class=nx>z</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>k</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>k</span> <span class=o>&lt;</span> <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>height</span><span class=p>;</span> <span class=nx>k</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=kd>let</span> <span class=nx>pixel</span> <span class=o>=</span> <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>z</span><span class=p>,</span> <span class=nx>k</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=kd>let</span> <span class=nx>l</span> <span class=o>=</span> <span class=nx>constrain</span><span class=p>(</span><span class=kr>int</span><span class=p>(</span><span class=nx>lightness</span><span class=p>(</span><span class=nx>pixel</span><span class=p>)</span> <span class=o>+</span> <span class=nx>slider</span><span class=p>.</span><span class=nx>value</span><span class=p>()),</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>100</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=kd>let</span> <span class=nx>newColor</span> <span class=o>=</span> <span class=s2>&#34;hsl(&#34;</span> <span class=o>+</span> <span class=kr>int</span><span class=p>(</span><span class=nx>hue</span><span class=p>(</span><span class=nx>pixel</span><span class=p>))</span> <span class=o>+</span> <span class=s2>&#34;, &#34;</span> <span class=o>+</span> <span class=nx>saturation</span><span class=p>(</span><span class=nx>pixel</span><span class=p>)</span> <span class=o>+</span> <span class=s2>&#34;%, &#34;</span> <span class=o>+</span> <span class=nx>l</span> <span class=o>+</span> <span class=s2>&#34;%)&#34;</span>
+</span></span><span class=line><span class=cl>            <span class=nx>lightFile</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>z</span><span class=p>,</span> <span class=nx>k</span><span class=p>,</span> <span class=nx>color</span><span class=p>(</span><span class=nx>newColor</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>            <span class=nx>histogram</span><span class=p>[</span><span class=nx>l</span><span class=p>]</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>lightFile</span><span class=p>.</span><span class=nx>updatePixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nx>scaleHistogram</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>changeKernel</span><span class=p>(</span><span class=nx>M</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>resetHistogram</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>rangeX</span> <span class=o>=</span> <span class=kr>int</span><span class=p>(</span><span class=nx>M</span><span class=p>.</span><span class=nx>length</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>rangeY</span> <span class=o>=</span> <span class=kr>int</span><span class=p>(</span><span class=nx>M</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>length</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>x</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>x</span> <span class=o>&lt;</span> <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>width</span><span class=p>;</span> <span class=nx>x</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>y</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>y</span> <span class=o>&lt;</span> <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>height</span><span class=p>;</span> <span class=nx>y</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>          <span class=kd>let</span> <span class=nx>convolution</span> <span class=o>=</span> <span class=p>[</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>255</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>          
+</span></span><span class=line><span class=cl>          <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=o>-</span><span class=nx>rangeX</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;=</span> <span class=nx>rangeX</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>j</span> <span class=o>=</span> <span class=o>-</span><span class=nx>rangeY</span><span class=p>;</span> <span class=nx>j</span> <span class=o>&lt;=</span> <span class=nx>rangeY</span><span class=p>;</span> <span class=nx>j</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>              
+</span></span><span class=line><span class=cl>              <span class=kd>let</span> <span class=nx>pixel</span> <span class=o>=</span> <span class=nx>file</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>x</span> <span class=o>+</span> <span class=nx>i</span><span class=p>,</span> <span class=nx>y</span> <span class=o>+</span> <span class=nx>j</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>              <span class=kd>let</span> <span class=nx>val</span> <span class=o>=</span> <span class=nx>M</span><span class=p>[</span><span class=nx>i</span> <span class=o>+</span> <span class=nx>rangeX</span><span class=p>][</span><span class=nx>j</span> <span class=o>+</span> <span class=nx>rangeY</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>              
+</span></span><span class=line><span class=cl>              <span class=nx>convolution</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>+=</span> <span class=nx>pixel</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>*</span> <span class=nx>val</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>              <span class=nx>convolution</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>+=</span> <span class=nx>pixel</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>*</span> <span class=nx>val</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>              <span class=nx>convolution</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span> <span class=o>+=</span> <span class=nx>pixel</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span> <span class=o>*</span> <span class=nx>val</span><span class=p>;</span>          
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>          <span class=p>}</span>
+</span></span><span class=line><span class=cl>          <span class=nx>histogram</span><span class=p>[</span><span class=kr>int</span><span class=p>(</span><span class=nx>lightness</span><span class=p>(</span><span class=nx>convolution</span><span class=p>))]</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>          <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>,</span> <span class=nx>convolution</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>updatePixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nx>scaleHistogram</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nx>changeLightness</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>masking</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>menu</span><span class=p>.</span><span class=nx>value</span><span class=p>()</span> <span class=o>==</span> <span class=s2>&#34;Identity&#34;</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>matrix</span> <span class=o>=</span> <span class=p>[</span> <span class=p>[</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>0</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>0</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>0</span> <span class=p>]</span> <span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>menu</span><span class=p>.</span><span class=nx>value</span><span class=p>()</span> <span class=o>==</span> <span class=s2>&#34;Edge Detection&#34;</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>matrix</span> <span class=o>=</span> <span class=p>[</span> <span class=p>[</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span>  <span class=mi>8</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span> <span class=p>]</span> <span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>menu</span><span class=p>.</span><span class=nx>value</span><span class=p>()</span> <span class=o>==</span> <span class=s2>&#34;Sharpen&#34;</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>matrix</span> <span class=o>=</span> <span class=p>[</span> <span class=p>[</span>  <span class=mi>0</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span>  <span class=mi>0</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span>  <span class=mi>5</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span>  <span class=mi>0</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span>  <span class=mi>0</span> <span class=p>]</span> <span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>menu</span><span class=p>.</span><span class=nx>value</span><span class=p>()</span> <span class=o>==</span> <span class=s2>&#34;Emboss&#34;</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>matrix</span> <span class=o>=</span> <span class=p>[</span> <span class=p>[</span> <span class=o>-</span><span class=mi>2</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=mi>0</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span>  <span class=mi>1</span><span class=p>,</span> <span class=mi>1</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span>  <span class=mi>0</span><span class=p>,</span>  <span class=mi>1</span><span class=p>,</span> <span class=mi>2</span> <span class=p>]</span> <span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>menu</span><span class=p>.</span><span class=nx>value</span><span class=p>()</span> <span class=o>==</span> <span class=s2>&#34;Gaussian Blur 5x5&#34;</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>matrix</span> <span class=o>=</span> <span class=p>[</span> <span class=p>[</span> <span class=mi>1</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=mi>6</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>1</span><span class=o>/</span><span class=mi>256</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>16</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>24</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>16</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>4</span><span class=o>/</span><span class=mi>256</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=mi>6</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>24</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>36</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>24</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>6</span><span class=o>/</span><span class=mi>256</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>16</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>24</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>16</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>4</span><span class=o>/</span><span class=mi>256</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=mi>1</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=mi>6</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>1</span><span class=o>/</span><span class=mi>256</span> <span class=p>]</span> <span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>menu</span><span class=p>.</span><span class=nx>value</span><span class=p>()</span> <span class=o>==</span> <span class=s2>&#34;Unsharp Masking 5x5&#34;</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>matrix</span> <span class=o>=</span> <span class=p>[</span> <span class=p>[</span> <span class=o>-</span><span class=mi>1</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=o>-</span><span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=o>-</span><span class=mi>6</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=o>-</span><span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=o>/</span><span class=mi>256</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=o>-</span><span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>16</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>24</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>16</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>4</span><span class=o>/</span><span class=mi>256</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=o>-</span><span class=mi>6</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>24</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=mi>476</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>24</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>6</span><span class=o>/</span><span class=mi>256</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=o>-</span><span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>16</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>24</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>16</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>4</span><span class=o>/</span><span class=mi>256</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>                   <span class=p>[</span> <span class=o>-</span><span class=mi>1</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=o>-</span><span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=o>-</span><span class=mi>6</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span>  <span class=o>-</span><span class=mi>4</span><span class=o>/</span><span class=mi>256</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=o>/</span><span class=mi>256</span> <span class=p>]</span> <span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>changeKernel</span><span class=p>(</span><span class=nx>matrix</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>resetHistogram</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>histogram</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;=</span> <span class=mi>100</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>append</span><span class=p>(</span><span class=nx>histogram</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>scaleHistogram</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;=</span> <span class=mi>100</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>histogram</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span> <span class=o>=</span> <span class=kr>int</span><span class=p>(</span><span class=nx>map</span><span class=p>(</span><span class=nx>histogram</span><span class=p>[</span><span class=nx>i</span><span class=p>],</span> <span class=nx>min</span><span class=p>(</span><span class=nx>histogram</span><span class=p>),</span> <span class=nx>max</span><span class=p>(</span><span class=nx>histogram</span><span class=p>),</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>500</span><span class=p>,</span> <span class=kc>true</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>handleFile</span><span class=p>(</span><span class=nx>img</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fileLoading</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>file</span> <span class=o>=</span> <span class=nx>createImg</span><span class=p>(</span><span class=nx>img</span><span class=p>.</span><span class=nx>data</span><span class=p>,</span> <span class=s2>&#34;&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>file</span><span class=p>.</span><span class=nx>hide</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>fileSrc</span> <span class=o>=</span> <span class=nx>file</span><span class=p>.</span><span class=nx>attribute</span><span class=p>(</span><span class=s2>&#34;src&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>file</span> <span class=o>=</span> <span class=nx>loadImage</span><span class=p>(</span><span class=nx>fileSrc</span><span class=p>,</span> <span class=nx>fileLoaded</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>fileLoaded</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fileLoading</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>uploaded</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>setup</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div></details></div><iframe style=width:620px;height:1020px srcdoc='
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script>
+              
+let file; let newFile
+let maskedFile; let lightFile
+let histogram;
+let fileLoading = false;
+let uploaded = false;
+
+function preload() {
+file = loadImage("../assets/shrek.png");
+}
+
+function setup() {
+createCanvas(600, 1000);
+colorMode(RGB, 255);
+textSize(20);
+textAlign(CENTER);
+textStyle(BOLD);
+
+file.resize(250,250);
+maskedFile = createImage(file.width, file.height);
+lightFile = createImage(file.width, file.height);
+
+if (!uploaded){
+newFile = createFileInput(handleFile);
+newFile.position(width/2 - 65, 25);
+
+    slider = createSlider(-100, 100, 0);
+    slider.position(325, 380);
+    slider.style(&#39;width&#39;, &#39;250px&#39;);
+
+    menu = createSelect();
+    menu.position(25, 380);
+    menu.style(&#39;width&#39;, &#39;250px&#39;);
+    menu.option("Identity");
+    menu.option("Edge Detection");
+    menu.option("Sharpen");
+    menu.option("Emboss");
+    menu.option("Gaussian Blur 5x5");
+    menu.option("Unsharp Masking 5x5"); 
+    
+    resetHistogram();
+
+    file.loadPixels();
+    maskedFile.loadPixels();
+
+    for (let j = 0; j < file.width; j++) {
+      for (let k = 0; k < file.height; k++) {
+        let pixel = file.get(j, k);
+        maskedFile.set(j, k, pixel);
+        lightFile.set(j, k, pixel);
+        histogram[int(lightness(pixel))]++;
+      }
+    }
+
+    scaleHistogram();
+
+    maskedFile.updatePixels();
+    lightFile.updatePixels();
+}
+else {
+masking();
+}
+slider.input(changeLightness);
+menu.input(masking);
+}
+
+function draw() {
+background(0);
+
+noStroke();
+fill("white")
+text("Lightness:", 3*width/4, 360);
+text("Kernel:", width/4, 360);
+rect(0, 420, width, height-420)
+fill("black")
+text("Histograma de la imagen resultante:", width/2, 450);
+
+if(!fileLoading){
+image(file, 25, 70);
+image(lightFile, 325, 70);
+stroke("purple");
+for (let w = 0; w <= 100; w++) {
+let ab = int(map(w, 0, 100, 25, width - 25));
+line(ab, height - histogram[w] - 30, ab, height - 30);
+}
+}
+}
+
+function changeLightness(){
+resetHistogram();
+for (let z = 0; z < maskedFile.width; z++) {
+for (let k = 0; k < maskedFile.height; k++) {
+let pixel = maskedFile.get(z, k);
+let l = constrain(int(lightness(pixel) + slider.value()), 0, 100)
+let newColor = "hsl(" + int(hue(pixel)) + ", " + saturation(pixel) + "%, " + l + "%)"
+lightFile.set(z, k, color(newColor));
+histogram[l]++;
+}
+}
+lightFile.updatePixels();
+scaleHistogram();
+}
+
+function changeKernel(M){
+resetHistogram();
+
+let rangeX = int(M.length/2)
+let rangeY = int(M[0].length/2)
+
+for (let x = 0; x < maskedFile.width; x++) {
+for (let y = 0; y < maskedFile.height; y++) {
+
+      let convolution = [0,0,0,255]
+      
+      for (let i = -rangeX; i <= rangeX; i++) {
+        for (let j = -rangeY; j <= rangeY; j++) {
+          
+          let pixel = file.get(x + i, y + j);
+          let val = M[i + rangeX][j + rangeY]
+          
+          convolution[0] += pixel[0] * val;
+          convolution[1] += pixel[1] * val;
+          convolution[2] += pixel[2] * val;          
+        }
+      }
+      histogram[int(lightness(convolution))]++;
+      maskedFile.set(x, y, convolution)
+    }
+}
+maskedFile.updatePixels();
+scaleHistogram();
+changeLightness();
+}
+
+function masking() {
+if (menu.value() == "Identity"){
+matrix = [ [ 0, 0, 0 ],
+[ 0, 1, 0 ],
+[ 0, 0, 0 ] ];
+} else if (menu.value() == "Edge Detection"){
+matrix = [ [ -1, -1, -1 ],
+[ -1,  8, -1 ],
+[ -1, -1, -1 ] ];
+} else if (menu.value() == "Sharpen"){
+matrix = [ [  0, -1,  0 ],
+[ -1,  5, -1 ],
+[  0, -1,  0 ] ];
+} else if (menu.value() == "Emboss"){
+matrix = [ [ -2, -1, 0 ],
+[ -1,  1, 1 ],
+[  0,  1, 2 ] ];
+} else if (menu.value() == "Gaussian Blur 5x5"){
+matrix = [ [ 1/256,  4/256,  6/256,  4/256, 1/256 ],
+[ 4/256, 16/256, 24/256, 16/256, 4/256 ],
+[ 6/256, 24/256, 36/256, 24/256, 6/256 ],
+[ 4/256, 16/256, 24/256, 16/256, 4/256 ],
+[ 1/256,  4/256,  6/256,  4/256, 1/256 ]];
+} else if (menu.value() == "Unsharp Masking 5x5"){
+matrix = [ [ -1/256,  -4/256,  -6/256,  -4/256, -1/256 ],
+[ -4/256, -16/256, -24/256, -16/256, -4/256 ],
+[ -6/256, -24/256, 476/256, -24/256, -6/256 ],
+[ -4/256, -16/256, -24/256, -16/256, -4/256 ],
+[ -1/256,  -4/256,  -6/256,  -4/256, -1/256 ]];
+}
+changeKernel(matrix);
+}
+
+function resetHistogram(){
+histogram = [];
+for (let i = 0; i <= 100; i++){
+append(histogram, 0);
+}
+}
+
+function scaleHistogram(){
+for (let i = 0; i <= 100; i++){
+histogram[i] = int(map(histogram[i], min(histogram), max(histogram), 0, 500, true));
+}
+}
+
+function handleFile(img) {
+fileLoading = true;
+file = createImg(img.data, "");
+file.hide();
+let fileSrc = file.attribute("src");
+file = loadImage(fileSrc, fileLoaded);
+}
+
+function fileLoaded() {
+fileLoading = false;
+uploaded = true;
+setup();
+}
+
+            </script>
+          </head>
+          <body>
+          </body>
+        </html>
+      '></iframe><div style=text-align:justify;text-justify:inter-word><p>El programa desarrollado es extenso y posee varias funcionalidades: en primer lugar, el botón de la parte
+superior sirve para cargar imágenes desde la máquina local. Es importante que la imagen sea cuadrada desde
+un inicio para evitar deformaciones cuando se reajuste su tamaño. A continuación se deja una carpeta con
+archivos de prueba que se pueden cargar para probar el funcionamiento:</p><p><a href="https://drive.google.com/file/d/153XW4i6lhp4niwZDNx_7F-_M6RIB-0Xo/view?usp=share_link" target=_blank><img src=../assets/downloadButton.png width=200px></a></p><p>En segundo lugar, a la izquierda aparece la imagen original, mientras que a la derecha aparece la imagen
+transformada. Debajo de ellas hay un selector y un <em>slider</em>: con el primero es posible elegir el kernel a
+aplicar y con el segundo es posible cambiar la luminosidad.</p><p>Finalmente, se tiene el histograma que genera la imagen resultante, es decir, después de sufrir la convolución
+y el cambio en la luminosidad: se hizo de esta forma porque así es posible ver las variaciones de este atributo
+para cada caso.</p><p>En cuanto al código, se tienen las mismas funciones para la carga de archivos que en la sección anterior
+sobre <em>visual masking</em>: allí están detalladas por si se desea conocer su funcionamiento. Como tal, en esta
+aplicación hay dos funciones que se destacan: la del cambio de luminosidad y la del cambio de kernel.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>changeLightness</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>resetHistogram</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>z</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>z</span> <span class=o>&lt;</span> <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>width</span><span class=p>;</span> <span class=nx>z</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>k</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>k</span> <span class=o>&lt;</span> <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>height</span><span class=p>;</span> <span class=nx>k</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=kd>let</span> <span class=nx>pixel</span> <span class=o>=</span> <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>z</span><span class=p>,</span> <span class=nx>k</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=kd>let</span> <span class=nx>l</span> <span class=o>=</span> <span class=nx>constrain</span><span class=p>(</span><span class=kr>int</span><span class=p>(</span><span class=nx>lightness</span><span class=p>(</span><span class=nx>pixel</span><span class=p>)</span> <span class=o>+</span> <span class=nx>slider</span><span class=p>.</span><span class=nx>value</span><span class=p>()),</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>100</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=kd>let</span> <span class=nx>newColor</span> <span class=o>=</span> <span class=s2>&#34;hsl(&#34;</span> <span class=o>+</span> <span class=kr>int</span><span class=p>(</span><span class=nx>hue</span><span class=p>(</span><span class=nx>pixel</span><span class=p>))</span> <span class=o>+</span> <span class=s2>&#34;, &#34;</span> <span class=o>+</span> <span class=nx>saturation</span><span class=p>(</span><span class=nx>pixel</span><span class=p>)</span> <span class=o>+</span> <span class=s2>&#34;%, &#34;</span> <span class=o>+</span> <span class=nx>l</span> <span class=o>+</span> <span class=s2>&#34;%)&#34;</span>
+</span></span><span class=line><span class=cl>            <span class=nx>lightFile</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>z</span><span class=p>,</span> <span class=nx>k</span><span class=p>,</span> <span class=nx>color</span><span class=p>(</span><span class=nx>newColor</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>            <span class=nx>histogram</span><span class=p>[</span><span class=nx>l</span><span class=p>]</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>lightFile</span><span class=p>.</span><span class=nx>updatePixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nx>scaleHistogram</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div><p>Esta función del cambio de luminosidad, primero que todo, resetea el histograma (pues está mostrando la distribución
+de la luminosidad y esta va a cambiar en cuanto se deslice el <em>slider</em>): esto equivale a poner todos sus valores
+en cero. Acto seguido, itera sobre cada pixel de la imagen emnascarada (es decir, la que ya pasó por la convolución)
+y obtiene su nuevo valor de luminosidad, limitándolo en el rango de cero a cien.</p><p>Para actualizar la imagen, se crea un nuevo pixel utilizando el modo de color <strong>HSL</strong>, a diferencia del canvas, que
+utiliza <strong>RGB</strong>: aquí se recibe el matiz y la saturación sin variaciones, pero en la luminosidad sí se pasa el valor
+alterado. Por último, se incrementa el valor del histograma en la posición <strong>l</strong>, esto es porque el eje x representa
+los valores del cero al cien que puede tomar la luminosidad, dado que se va a mostrar la distribución que tiene en
+la imagen. Al final se actualizan los pixeles del archivo <strong>lightFile</strong> (el que finalmente se muestra al usuario)
+y se escala al histograma para que este se muestre de manera apropiada en el canvas.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>changeKernel</span><span class=p>(</span><span class=nx>M</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>resetHistogram</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>rangeX</span> <span class=o>=</span> <span class=kr>int</span><span class=p>(</span><span class=nx>M</span><span class=p>.</span><span class=nx>length</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>rangeY</span> <span class=o>=</span> <span class=kr>int</span><span class=p>(</span><span class=nx>M</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>length</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>x</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>x</span> <span class=o>&lt;</span> <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>width</span><span class=p>;</span> <span class=nx>x</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>y</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>y</span> <span class=o>&lt;</span> <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>height</span><span class=p>;</span> <span class=nx>y</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>          <span class=kd>let</span> <span class=nx>convolution</span> <span class=o>=</span> <span class=p>[</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>255</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>          
+</span></span><span class=line><span class=cl>          <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=o>-</span><span class=nx>rangeX</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;=</span> <span class=nx>rangeX</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>j</span> <span class=o>=</span> <span class=o>-</span><span class=nx>rangeY</span><span class=p>;</span> <span class=nx>j</span> <span class=o>&lt;=</span> <span class=nx>rangeY</span><span class=p>;</span> <span class=nx>j</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>              
+</span></span><span class=line><span class=cl>              <span class=kd>let</span> <span class=nx>pixel</span> <span class=o>=</span> <span class=nx>file</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>x</span> <span class=o>+</span> <span class=nx>i</span><span class=p>,</span> <span class=nx>y</span> <span class=o>+</span> <span class=nx>j</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>              <span class=kd>let</span> <span class=nx>val</span> <span class=o>=</span> <span class=nx>M</span><span class=p>[</span><span class=nx>i</span> <span class=o>+</span> <span class=nx>rangeX</span><span class=p>][</span><span class=nx>j</span> <span class=o>+</span> <span class=nx>rangeY</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>              
+</span></span><span class=line><span class=cl>              <span class=nx>convolution</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>+=</span> <span class=nx>pixel</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>*</span> <span class=nx>val</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>              <span class=nx>convolution</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>+=</span> <span class=nx>pixel</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>*</span> <span class=nx>val</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>              <span class=nx>convolution</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span> <span class=o>+=</span> <span class=nx>pixel</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span> <span class=o>*</span> <span class=nx>val</span><span class=p>;</span>          
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>          <span class=p>}</span>
+</span></span><span class=line><span class=cl>          <span class=nx>histogram</span><span class=p>[</span><span class=kr>int</span><span class=p>(</span><span class=nx>lightness</span><span class=p>(</span><span class=nx>convolution</span><span class=p>))]</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>          <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>,</span> <span class=nx>convolution</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>maskedFile</span><span class=p>.</span><span class=nx>updatePixels</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nx>scaleHistogram</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nx>changeLightness</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div><p>Ahora, en la función de cambiar el kernel también se reinicia el histograma. Se calculan las variables
+<strong>rangeX</strong> y <strong>rangeY</strong> para saber qué tan atrás se debe ir en los pixeles que están al borde de la imagen.
+Luego están cuatro ciclos anidados: con los dos primeros se itera sobre los pixeles de la imagen original,
+mientras que con los dos internos se itera en los bloques del mismo tamaño de la matriz del kernel para
+realizar la operación de convolución. Este procedimiento se aplica sobre cada valor R, G y B del píxel,
+dando como resultado un pixel nuevo, llamado <strong>convolution</strong>, el cual se pone en el archivo <strong>maskedFile</strong>.</p><p>Por su parte, para el histograma se calcula la luminosidad del pixel nuevo y se incrementa el valor en
+dicha posición del arreglo. Al final se actualizan los pixeles, se escala el histograma y se actualiza la
+luminosidad, pues es el archivo <strong>lightFile</strong> y no <strong>maskedFile</strong> el que se está renderizando junto a la
+imagen original. Esta función se llama dentro de la función <strong>masking</strong>, la cual contiene las matrices
+expresadas en el marco teórico y le pasa una de ellas como parámetro a la función <strong>changeKernel</strong> a partir
+de lo que se ingresó en el selector.</p><div id=conclusiones-y-trabajo-futuro class=anchor>Conclusiones y Trabajo futuro></div><h2 class="relative group">Conclusiones y Trabajo futuro
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#conclusiones-y-trabajo-futuro aria-label=Anchor>#</a></span></h2><ul><li>Se puede evidenciar que el uso de máscaras de convolución es muy útil en el procesamiento de imágenes
+digitales, pues dependiendo del kernel aplicado es posible obtener información relevante como los bordes
+de la imagen o versiones más nítidas y/o borrrosas de la misma. Esto es algo que también se puede lograr
+mediante la aplicación de métodos numéricos, pero resulta ser mucho más sencillo (y práctico) con las
+técnicas desarrolladas en esta sección.</li><li>El hecho de que el histograma de la imagen cambie en tiempo real permite reconocer la importancia de
+la luminosidad, pues su aumento o su decremento altera por completo la distribución del gráfico. Una posible
+aplicación, que podría considerarse también como trabajo futuro, consistiría en tener <em>sliders</em> que permitan
+variar las tonalidades R, G y B de manera individual, con el fin de evaluar qué impacto tienen en el
+cáculo y la distribución de la luminosidad en la imagen.</li><li>Entre otros trabajos futuros a desarrollar, se considera la posibilidad de aplicar máscaras de convolución
+a animaciones y vídeos: esto podría ser una herramienta ampliamente útil, pero que podría consumir muchos
+recursos computacionales, puesto que, finalmente, se terminaría aplicando la operación en cada pixel de cada
+uno de los fotogramas.</li><li>En síntesis, el enmascaramiento visual ofrece un abanico de posibilidades, tanto en lo que respecta a patrones
+y animaciones de moiré como a kernels de imágenes: los conceptos aprendidos pueden aplicarse para evaluar
+la atención visual de un producto multimedia, mejorar su accesibilidad y/o armonía, detectar ciertos patrones,
+entre muchos otros. Así mismo, gracias a esto también es posible comprender cómo funcionan los filtros que
+de edición de fotografías en los celulares y las aplicaciones móviles, e incluso algunas de las herramientas
+que pueden llegar a emplear las inteligencias artificiales relacionadas con el procesamiento de imágenes digitales.</li></ul><div id=referencias class=anchor>Referencias></div><h2 class="relative group">Referencias
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#referencias aria-label=Anchor>#</a></span></h2><div id=1-s-kim-and-r-casper-applications-of-convolution-in-image-processing-with-matlab-university-of-washington-pp-1-20-2013-httpkiwibridgeporteducpeg585convolutionfiltersinmatlabpdf class=anchor><em>[1]</em> S. Kim and R. Casper, &ldquo;Applications of convolution in image processing with MATLAB,&rdquo; University of Washington, pp. 1-20, 2013. <a href=http://kiwi.bridgeport.edu/cpeg585/ConvolutionFiltersInMatlab.pdf target=_blank>http://kiwi.bridgeport.edu/cpeg585/ConvolutionFiltersInMatlab.pdf</a>></div><h4 class="relative group"><em>[1]</em> S. Kim and R. Casper, &ldquo;Applications of convolution in image processing with MATLAB,&rdquo; University of Washington, pp. 1-20, 2013. <a href=http://kiwi.bridgeport.edu/cpeg585/ConvolutionFiltersInMatlab.pdf target=_blank>http://kiwi.bridgeport.edu/cpeg585/ConvolutionFiltersInMatlab.pdf</a>
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#1-s-kim-and-r-casper-applications-of-convolution-in-image-processing-with-matlab-university-of-washington-pp-1-20-2013-httpkiwibridgeporteducpeg585convolutionfiltersinmatlabpdf aria-label=Anchor>#</a></span></h4><div id=2-j-p-charalambos-visual-masking-visual-computing-feb-2023-httpsvisualcomputinggithubiodocsvisual_illusionsmasking class=anchor><em>[2]</em> J. P. Charalambos, &ldquo;Visual masking&rdquo;. Visual Computing, Feb. 2023. <a href=https://visualcomputing.github.io/docs/visual_illusions/masking/ target=_blank>https://visualcomputing.github.io/docs/visual_illusions/masking/</a>></div><h4 class="relative group"><em>[2]</em> J. P. Charalambos, &ldquo;Visual masking&rdquo;. Visual Computing, Feb. 2023. <a href=https://visualcomputing.github.io/docs/visual_illusions/masking/ target=_blank>https://visualcomputing.github.io/docs/visual_illusions/masking/</a>
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#2-j-p-charalambos-visual-masking-visual-computing-feb-2023-httpsvisualcomputinggithubiodocsvisual_illusionsmasking aria-label=Anchor>#</a></span></h4><div id=3-s-raveendran-p-j-edavoor-n-k-yernad-balachandra-and-v-moodabettu-harishchandra-design-and-implementation-of-image-kernels-using-reversible-logic-gates-iet-image-processing-vol-14-no-16-pp-4110-4121-2020-doi-101049iet-ipr20191681 class=anchor><em>[3]</em> S. Raveendran, P. J. Edavoor, N. K. Yernad Balachandra and V. Moodabettu Harishchandra, &ldquo;Design and implementation of image kernels using reversible logic gates,&rdquo; IET Image Processing, vol. 14, no 16, pp. 4110-4121, 2020, doi: 10.1049/iet-ipr.2019.1681.></div><h4 class="relative group"><em>[3]</em> S. Raveendran, P. J. Edavoor, N. K. Yernad Balachandra and V. Moodabettu Harishchandra, &ldquo;Design and implementation of image kernels using reversible logic gates,&rdquo; IET Image Processing, vol. 14, no 16, pp. 4110-4121, 2020, doi: 10.1049/iet-ipr.2019.1681.
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#3-s-raveendran-p-j-edavoor-n-k-yernad-balachandra-and-v-moodabettu-harishchandra-design-and-implementation-of-image-kernels-using-reversible-logic-gates-iet-image-processing-vol-14-no-16-pp-4110-4121-2020-doi-101049iet-ipr20191681 aria-label=Anchor>#</a></span></h4><div id=4-r-c-gonzalez-and-r-e-woods-digital-image-processing-4th-ed-pearson-2018 class=anchor><em>[4]</em> R. C. Gonzalez and R. E. Woods, &ldquo;Digital Image Processing,&rdquo; 4th ed., Pearson, 2018.></div><h4 class="relative group"><em>[4]</em> R. C. Gonzalez and R. E. Woods, &ldquo;Digital Image Processing,&rdquo; 4th ed., Pearson, 2018.
+<span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#4-r-c-gonzalez-and-r-e-woods-digital-image-processing-4th-ed-pearson-2018 aria-label=Anchor>#</a></span></h4></div></br></br></div><script>var oid="views_first/masking2.md",oid_likes="likes_first/masking2.md"</script><script type=text/javascript src=/showcase/js/page.min.0e49973b4ad0a382c7c6012d8bff8226316642daabc4f8a20477bd08674f3da6e2fa993bc20ad4f51e7c5bb68e6f913a207a7c4fe37ea0e7b806894afce0a64e.js integrity="sha512-DkmXO0rQo4LHxgEti/+CJjFmQtqrxPiiBHe9CGdPPabi+pk7wgrU9R58W7aOb5E6IHp8T+N+oOe4BolK/OCmTg=="></script></section><footer class="pt-8 max-w-prose print:hidden"><div class=flex><div class=place-self-center><div class="text-2xl sm:text-lg"><div class="flex flex-wrap text-neutral-400 dark:text-neutral-500"><a class="px-1 hover:text-primary-700 dark:hover:text-primary-400" href=https://github.com/VisualComputing20231/showcase target=_blank aria-label=Github rel="me noopener noreferrer"><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentcolor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6.0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6.0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3.0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1.0-6.2-.3-40.4-.3-61.4.0.0-70 15-84.7-29.8.0.0-11.4-29.1-27.8-36.6.0.0-22.9-15.7 1.6-15.4.0.0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5.0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9.0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4.0 33.7-.3 75.4-.3 83.6.0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6.0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9.0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span></span></a></div></div></div></div><div class=pt-8><hr class="border-dotted border-neutral-300 dark:border-neutral-600"><div class="flex justify-between pt-3"><span><a class="flex group mr-3" href=/showcase/first/pixelator/><span class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400">&larr;</span>
+<span class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400">&rarr;</span>
+<span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"></span>
+<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"></span></span></a></span><span><a class="flex text-right group ml-3" href=/showcase/first/masking1/><span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"></span>
+<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"></span></span><span class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400">&rarr;</span>
+<span class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400">&larr;</span></a></span></div></div></footer></article><div class="pointer-events-none absolute top-[100vh] bottom-0 w-12 ltr:right-0 rtl:left-0"><a href=#the-top class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400" aria-label="Scroll to top" title="Scroll to top">&uarr;</a></div></main><footer class="py-10 print:hidden"><div class="flex items-center justify-between"><p class="text-sm text-neutral-500 dark:text-neutral-400">&copy;
+2023</p><p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://gohugo.io/ target=_blank rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://blowfish.page/ target=_blank rel="noopener noreferrer">Blowfish</a></p></div><script>mediumZoom(document.querySelectorAll("img:not(.nozoom)"),{margin:24,background:"rgba(0,0,0,0.5)",scrollOffset:0})</script><script type=text/javascript src=/showcase/js/process.min.2166d3adac1679c00a75161830ab5725d3efc0e3d3f8c2453fb01d0907948436c25f0f8a7ad824322fa22f3f9c85fd4d0a1d5c856f53b862157da25a57dc3d52.js integrity="sha512-IWbTrawWecAKdRYYMKtXJdPvwOPT+MJFP7AdCQeUhDbCXw+KetgkMi+iLz+chf1NCh1chW9TuGIVfaJaV9w9Ug=="></script></footer></div></body></html>
