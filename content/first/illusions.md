@@ -4,7 +4,7 @@
 
 
 {{% justify %}}
-En esta seccion se presentaraán algunos fenomenos visuales y su respectiva implementación, además se proporcionara una breve explicacion junto a la fuente de donde se obtuvo la informacion. 
+En esta seccion se presentarán algunos fenomenos visuales y su respectiva implementación, además se proporcionara una breve explicacion junto a la fuente de donde se obtuvo la informacion. 
 
 ## Motion Aftereffect (Waterfall Illusion)
 ### Marco Teorico
@@ -22,7 +22,7 @@ En resumen, la ilusión de la cascada es un fenómeno óptico que se produce cua
 Fíjate en la cruz central durante el movimiento y mira el ciclo al menos tres veces. Observa el efecto de la imagen posterior al movimiento en la figura en reposo (el Buda de Kamakura). La "deformación" causada por el efecto de la imagen posterior al movimiento se aplica a cualquier cosa que observes. También puedes intentar cubrir un ojo, adaptarte durante aproximadamente tres ciclos y luego probar con el otro ojo.
 
 Esto se explica a menudo en términos de "fatiga" de la clase de neuronas que codifican una dirección de movimiento. Sin embargo, es más preciso interpretar esto en términos de adaptación o "control de ganancia". Estos detectores de movimiento no se encuentran en la retina sino en el cerebro (Bach y Hoffmann 2000). Para obtener una explicación más detallada y una demostración interesante del "efecto cascada", consulte la página de [George Mather](http://www.georgemather.com/MotionDemos/MAEMP4.html).
-{{% /justify %}}
+
 
 
 {{< details title="Waterfall Illusion" open=false >}}
@@ -38,3 +38,190 @@ Esto se explica a menudo en términos de "fatiga" de la clase de neuronas que co
 </div>
 {{< /details >}}
 
+## Código y Resultados
+
+Este ejercicio se desarrolla en el efecto visual de la cascada. Para lograr el efecto de movimiento, se dibujan múltiples áreas a distintos radios, determinados por la cantidad de anillos rings. Luego, se almacenan en un array ringpos[] en orden de más grande a más pequeño y, por último, se les asigna un color blanco o negro alternadamente. También hay que notar que la función está restringida por el módulo % de un radio establecido, por lo que una vez el radio de alguna área llegue al límite (si se expande), este se devolverá al radio mínimo.
+
+{{< highlight js >}}
+for (let i = 0; i < rings; i++) {
+        cursize = (frameCount * speed + (size / rings) * i) % size;
+        if (cursize == 0) {
+        inverted = !inverted;
+        exterior = !exterior;
+        }
+        if (reversed) cursize = size - cursize;
+        ringpos[i] = cursize;
+    }
+{{< /highlight >}}
+
+En este caso, no se dibujan círculos completos, sino más bien arcos con un ángulo definido por la cantidad de ángulos `angles` y los radios previamente calculados. Luego, se rellenan las áreas de estos arcos cambiando su radio en cada frame. De esta manera, se logra el efecto de movimiento y el estilo cuadriculado de cada anillo.
+
+{{< highlight js>}}
+for (let i = 0; i < rings; i++) {
+        inverted = !inverted;
+        for (let j = 0; j < angles; j++) {
+        noStroke();
+        push();
+        if (j % 2 == 0) {
+            if (inverted) fill(255);
+            else fill(0);
+        } else {
+            if (inverted) fill(0);
+            else fill(255);
+        }
+        arc(
+            200,
+            200,
+            ringpos[i],
+            ringpos[i],
+            (2 * PI * j) / angles,
+            (2 * PI * (j + 1)) / angles
+        );
+        pop();
+        }
+    }
+{{< /highlight >}}
+
+Según el frame rate, se actualiza el radio de cada arco presente, de manera que se expande o se colapsa según lo determine la variable `reversed`, que cambiará su valor de verdad presionando el respectivo botón. Para lograr que el efecto se muestre correctamente, la duración del movimiento es mucho mayor a la duración de la imagen mostrada (cerca de 3 veces más largo).
+
+Por último, se dibuja la imagen original en el centro de la pantalla. Esta imagen se carga previamente en la función `preload()` y se almacena en la variable `originalImage`. Esta imagen se muestra o no dependiendo del valor de la variable `showImage`, que se cambia cada cierto tiempo dependiendo de la variable `delayTime` y el frame actual.
+
+{{< highlight js >}}
+if (frameCount % delayTime == 0) showImage = !showImage;
+    if (showImage) {
+        delayTime = 200;
+        image(originalImage, 0, 0, 400, 400);
+    } else {
+        noFill();
+        stroke(0);
+        erase(0,255);
+        strokeWeight(100);
+        circle(200,200, 500);
+        noErase();
+        delayTime = 600;
+    }
+{{< /highlight>}}
+{{% /justify %}}
+El código completo se encuentra en el siguiente desplegable:
+
+{{< details title="**Código completo**" open=false >}}
+{{< highlight js >}}
+let fr = 30;
+let img = null;
+let delayTime = 200;
+let size = 560;
+let angles = 12;
+let speed = 4;
+let anchor = 100;
+let rings = 14;
+
+let inverted = false;
+let exterior = false;
+let reversed = false;
+let showImage = false;
+
+let button;
+
+function preload() {
+    originalImage = loadImage("../assets/buddha.jpg");
+};
+
+function setup() {
+    var canvas = createCanvas(400, 400);
+    canvas.parent("waterfall-illusion");
+    frameRate(fr);
+    button = createButton('Collapse');
+    button.parent("waterfall-illusion");
+    button.position(0, 0, 'sticky');
+    button.mousePressed(() => { 
+        button.elt.innerText = reversed ? 'Collapse' : 'Expand';
+        reversed = !reversed} );
+};
+
+function draw() {
+    background(128);
+    var cursize;
+    noStroke();
+    for (let j = 0; j < angles; j++) {
+        push();
+        if (j % 2 == 0) {
+        if (exterior) fill(255);
+        else fill(0);
+        } else {
+        if (exterior) fill(0);
+        else fill(255);
+    }
+    arc(
+        200,
+        200,
+        size,
+        size,
+        (2 * PI * j) / angles,
+        (2 * PI * (j + 1)) / angles
+    );
+    pop();
+    }
+    let ringpos = [];
+    for (let i = 0; i < rings; i++) {
+        cursize = (frameCount * speed + (size / rings) * i) % size;
+        if (cursize == 0) {
+        inverted = !inverted;
+        exterior = !exterior;
+        }
+        if (reversed) cursize = size - cursize;
+        ringpos[i] = cursize;
+    }
+    ringpos.sort(function (a, b) {
+        return b - a;
+    });
+    for (let i = 0; i < rings; i++) {
+        inverted = !inverted;
+        for (let j = 0; j < angles; j++) {
+        noStroke();
+        push();
+        if (j % 2 == 0) {
+            if (inverted) fill(255);
+            else fill(0);
+        } else {
+            if (inverted) fill(0);
+            else fill(255);
+        }
+        arc(
+            200,
+            200,
+            ringpos[i],
+            ringpos[i],
+            (2 * PI * j) / angles,
+            (2 * PI * (j + 1)) / angles
+        );
+        pop();
+        }
+    }
+    fill(0, 0, 255);
+    circle(200, 200, 30);
+    fill(255, 0, 0);
+    rect(199, 192, 2, 16);
+    rect(192, 199, 16, 2);
+    if (frameCount % delayTime == 0) showImage = !showImage;
+    if (showImage) {
+        delayTime = 200;
+        image(originalImage, 0, 0, 400, 400);
+    } else {
+        noFill();
+        stroke(0);
+        erase(0,255);
+        strokeWeight(100);
+        circle(200,200, 500);
+        noErase();
+        delayTime = 600;
+    }
+};
+
+{{< /highlight >}} {{< /details >}}
+## Trabajo futuro
+
+Mejorar el programa de manera que sea modificable en terminos de velocidad, cantidad de anillos y/o angulos, tamaño de la imagen, etc.
+
+Investigar e implementar mas fenomenos visuales.
+## Referencias
+#### *[1]* M. Bach, "Motion Aftereffect (Waterfall Illusion)" [Online]. Available: https://michaelbach.de/ot/mot-adapt/index.html.
