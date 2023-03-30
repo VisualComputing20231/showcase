@@ -444,3 +444,4 @@ Extender la aplicacion para poder ser utilizada con otros tipos de entrada como 
 ## Referencias
 #### *[1]* D. Nichols, "Coloring for Colorblindness" [Online]. Available: https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40.
 #### *[2]* ndesmic, "Exploring Color Math Through Color Blindness" [Online]. Available: https://dev.to/ndesmic/exploring-color-math-through-color-blindness-2m2h.
+#### *[3]* "Sample Videos" [Online]. Available: https://sample-videos.com.
