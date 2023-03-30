@@ -59,7 +59,6 @@ function setup() {
 function processFile(file) {
   selected = true;
   noLoop();
-  // noCanvas();
   if (file.type === "video") {
     video = createVideo(file.data, () => {
       loaded = true;
@@ -67,10 +66,8 @@ function processFile(file) {
       video.hide();
 
       const drawNextFrame = () => {
-        // Only draw the image to the screen when the video
-        // seek has completed
         const onSeek = () => {
-          draw(); // All the drawing code goes here
+          draw();
 
           video.elt.removeEventListener("seeked", onSeek);
 
