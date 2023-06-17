@@ -16,7 +16,65 @@
 
 [[main]]
   name = "Primera Entrega"
+  weight = 20
+
+[[main]]
+  name = "Segunda Entrega"
   weight = 30
+
+[[main]]
+  name = "Rendering"
+  parent = "Segunda Entrega"
+  pageRef = "second/rendering"
+  weight = 10
+
+[[main]]
+  name = "Coloring"
+  parent = "Segunda Entrega"
+  pageRef = "second/coloring"
+  weight = 20
+
+[[main]]
+  name = "Texturing"
+  parent = "Segunda Entrega"
+  pageRef = "second/texturing"
+  weight = 30
+
+[[main]]
+  name = "Image Processing"
+  parent = "Segunda Entrega"
+  pageRef = "second/imageProcessing"
+  weight = 40
+
+[[main]]
+  name = "Procedural Texturing"
+  parent = "Segunda Entrega"
+  pageRef = "second/proceduralTexturing"
+  weight = 50
+
+[[main]]
+  name = "Spatial Coherence"
+  parent = "Segunda Entrega"
+  pageRef = "second/spatialCoherence"
+  weight = 60
+
+[[main]]
+  name = "Photomosaic"
+  parent = "Segunda Entrega"
+  pageRef = "second/photomosaic"
+  weight = 70
+
+[[main]]
+  name = "Post Effects"
+  parent = "Segunda Entrega"
+  pageRef = "second/postEffects"
+  weight = 80
+
+[[main]]
+  name = "Space Transformations"
+  parent = "Segunda Entrega"
+  pageRef = "second/spaceTransformations"
+  weight = 90
 
 [[main]]
   name = "Visual Illusions"
@@ -25,7 +83,7 @@
   weight = 10
 
 [[main]]
-  name = "Coloring"
+  name = "Coloring "
   parent = "Primera Entrega"
   pageRef = "first/coloring"
   weight = 20
@@ -49,7 +107,7 @@ pageRef = "first/masking2"
 weight = 45
 
 [[main]]
-  name = "Spatial Coherence"
+  name = "Spatial Coherence "
   parent = "Primera Entrega"
   pageRef = "first/pixelator"
   weight = 50

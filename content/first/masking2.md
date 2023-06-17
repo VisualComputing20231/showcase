@@ -88,7 +88,7 @@ let fileLoading = false;
 let uploaded = false;
 
 function preload() {
-    file = loadImage("../assets/shrek.png");
+    file = loadImage("../../assets/shrek.png");
 }
 
 function setup() {
@@ -285,7 +285,7 @@ let fileLoading = false;
 let uploaded = false;
 
 function preload() {
-file = loadImage("../assets/shrek.png");
+file = loadImage("../../assets/shrek.png");
 }
 
 function setup() {
