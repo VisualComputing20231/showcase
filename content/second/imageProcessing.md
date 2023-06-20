@@ -107,7 +107,7 @@ de la región de interés. Finalmente, a la derecha hay un checkbox que permite 
 
 {{% /justify %}}
 
-{{< p5-iframe sketch="/showcase/sketches/imageProcessing.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="600" height="600" >}}
+{{< p5-iframe sketch="../../sketches/imageProcessing.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="600" height="600" >}}
 
 {{% justify %}}
 A continuación se dejan los shaders implementados para esta aplicación:
