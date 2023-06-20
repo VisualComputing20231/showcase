@@ -9,7 +9,6 @@ uniform float lens_radius;
 uniform float magnification;
 uniform bool roi;
 
-// Inspired by https://www.shadertoy.com/view/4tdXDl.
 void main()
 {
     vec2 uv = gl_FragCoord.xy / iResolution.y;
