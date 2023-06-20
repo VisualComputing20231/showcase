@@ -57,7 +57,7 @@ void main() {
         if (mouse_dist < lens_radius + 0.01)
         gl_FragColor = vec4(1., 1., 1., 1.);
 
-        //Draw a zoomed-in version of the texture
+        //Draw a processed version of the texture
         if (mouse_dist < lens_radius)
         gl_FragColor = vec4(convolution.rgb, 1.0);
     }
