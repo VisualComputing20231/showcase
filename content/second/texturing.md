@@ -46,7 +46,8 @@ A continuación se presenta el ejercicio desarrollado, en el cual se carga una i
 sobre esta, se pueden aplicar las herramientas mencionadas anteriormente.
 
 Puede dar clic sobre el selector de la parte superior izquierda para cambiar entre
-luma, HSV, HSL y Average. Por su parte, con el selector de la parte superior derecha
+luma, HSV, HSL y Average; junto a este encuentra un checkbox para alternar entre imagen o video.
+Por su parte, con el selector de la parte superior derecha
 es posible seleccionar si aplicar el tinte o no; adicionalmente, al lado se cuenta
 con la opción de elegir el color a interporlar.
 

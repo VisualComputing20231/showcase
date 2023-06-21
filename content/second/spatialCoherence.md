@@ -1,3 +1,0 @@
-# Spatial Coherence
-
-Spatial Coherence.

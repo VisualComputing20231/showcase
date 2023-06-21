@@ -41,7 +41,7 @@
   weight = 30
 
 [[main]]
-  name = "Image Processing"
+  name = "Image Processing & Post Effects"
   parent = "Segunda Entrega"
   pageRef = "second/imageProcessing"
   weight = 40
@@ -53,28 +53,10 @@
   weight = 50
 
 [[main]]
-  name = "Spatial Coherence"
-  parent = "Segunda Entrega"
-  pageRef = "second/spatialCoherence"
-  weight = 60
-
-[[main]]
-  name = "Photomosaic"
+  name = "Spatial Coherence & Photomosaic"
   parent = "Segunda Entrega"
   pageRef = "second/photomosaic"
-  weight = 70
-
-[[main]]
-  name = "Post Effects"
-  parent = "Segunda Entrega"
-  pageRef = "second/postEffects"
-  weight = 80
-
-[[main]]
-  name = "Space Transformations"
-  parent = "Segunda Entrega"
-  pageRef = "second/spaceTransformations"
-  weight = 90
+  weight = 60
 
 [[main]]
   name = "Visual Illusions"
