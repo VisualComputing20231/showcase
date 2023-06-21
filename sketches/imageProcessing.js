@@ -16,10 +16,6 @@ function preload() {
     lumaShader = readShader('/showcase/sketches/frags/luma.frag',
         { varyings: Tree.texcoords2 });
 
-    // video source: https://t.ly/LWUs2
-    // video_src = createVideo(['/sketches/shaders/wagon.webm']);
-    // video_src.hide(); // by default video shows up in separate dom
-    // image source: https://t.ly/Dz8W
     img = loadImage('../../assets/shrek.png');
     vid = createCapture(VIDEO);
     vid.hide();
